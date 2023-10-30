@@ -26,15 +26,15 @@ client := mirage.New("ui_xxxxxx", "sk_xxxxxx")
 Then, consume the client eg. to transcribe a audio file containing speech to text:
 
 ```go
-data, err := client.Task.TranscribeSpeech({
-  "locale": {
-    "to": "en"
+data, err := client.Task.TranscribeSpeech(mirage.TranscribeSpeechRequest {
+  Locale: mirage.TranscribeSpeechRequestLocale {
+    To: "en",
   },
 
-  "media": {
-    "type": "audio/mp3",
-    "url": "https://storage.crisp.chat/users/upload/session/5acfdb5400c15c00/audio1681224631050_9elgef.mp3"
-  }
+  Media: mirage.TranscribeSpeechRequestMedia {
+    Type: "audio/mp3",
+    URL: "https://storage.crisp.chat/users/upload/session/5acfdb5400c15c00/audio1681224631050_9elgef.mp3",
+  },
 })
 ```
 
@@ -63,16 +63,16 @@ This library implements all methods the Mirage API provides. See the [API docs](
 * **Request:**
 
 ```go
-client.Task.TranscribeSpeech({
-  "locale": {
-    "to": "en"
+data, err := client.Task.TranscribeSpeech(mirage.TranscribeSpeechRequest {
+  Locale: mirage.TranscribeSpeechRequestLocale {
+    To: "en",
   },
 
-  "media": {
-    "type": "audio/mp3",
-    "url": "https://storage.crisp.chat/users/upload/session/5acfdb5400c15c00/audio1681224631050_9elgef.mp3"
-  }
-});
+  Media: mirage.TranscribeSpeechRequestMedia {
+    Type: "audio/mp3",
+    URL: "https://storage.crisp.chat/users/upload/session/5acfdb5400c15c00/audio1681224631050_9elgef.mp3",
+  },
+})
 ```
 
 * **Response:**
