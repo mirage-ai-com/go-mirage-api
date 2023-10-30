@@ -14,7 +14,7 @@ Copyright 2023 Crisp IM SAS. See LICENSE for copying information.
 Import the library:
 
 ```go
-import "github.com/mirage-ai-com/go-mirage-api/mirage/v1"
+import "github.com/mirage-ai-com/go-mirage-api/mirage/v3"
 ```
 
 Construct a new authenticated Mirage client with your `user_id` and `secret_key` tokens.
