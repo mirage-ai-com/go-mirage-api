@@ -19,15 +19,15 @@ func main() {
   client := mirage.New(CONFIG_USER_ID, CONFIG_SECRET_KEY)
 
   // Answer provided question
-  data, err := client.Task.TranscribeSpeech({
-	  "locale": {
-	    "to": "en"
+  data, err := client.Task.TranscribeSpeech(mirage.TranscribeSpeechRequest {
+	  Locale: mirage.TranscribeSpeechRequestLocale {
+	    To: "en",
 	  },
 
-	  "media": {
-	    "type": "audio/mp3",
-	    "url": "https://storage.crisp.chat/users/upload/session/5acfdb5400c15c00/audio1681224631050_9elgef.mp3"
-	  }
+	  Media: mirage.TranscribeSpeechRequestMedia {
+	    Type: "audio/webm",
+	    URL: "https://files.mirage-ai.com/dash/terminal/samples/transcribe-speech/hey-there.weba",
+	  },
 	})
 
   if err != nil {
