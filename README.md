@@ -292,17 +292,17 @@ client.Task.CategorizeConversations({
 * **Request:**
 
 ```go
-client.Task.RankQuestion({
-  "question": "Hi! I am having issues setting up DNS records for my Crisp helpdesk. Can you help?",
-  "source": "helpdesk",
+client.Task.RankQuestion(mirage.RankQuestionRequest {
+  Question: "Hi! I am having issues setting up DNS records for my Crisp helpdesk. Can you help?",
+  Source: "helpdesk",
 
-  "context": {
-    "team": {
-      "id": "cf4ccdb5-df44-4668-a9e7-3ab31bebf89b",
-      "name": "Crisp"
-    }
-  }
-});
+  Context: mirage.RankQuestionRequestContext {
+    Team: mirage.RankQuestionRequestContextTeam {
+      ID: "cf4ccdb5-df44-4668-a9e7-3ab31bebf89b",
+      Name: "Crisp",
+    },
+  },
+})
 ```
 
 * **Response:**
@@ -344,15 +344,17 @@ client.Task.RankQuestion({
 * **Request:**
 
 ```go
-client.Task.TranslateText({
-  "locale": {
-    "from": "fr",
-    "to": "en"
+translateType := "html"
+
+client.Task.TranslateText(mirage.TranslateTextRequest {
+  Locale: mirage.TranslateTextRequestLocale {
+    From: "fr",
+    To: "en",
   },
 
-  "type": "html",
-  "text": "Bonjour, comment puis-je vous aider <span translate=\"no\">Mr Saliou</span> ?"
-});
+  Type: &translateType,
+  Text: "Bonjour, comment puis-je vous aider <span translate=\"no\">Mr Saliou</span> ?",
+})
 ```
 
 * **Response:**
