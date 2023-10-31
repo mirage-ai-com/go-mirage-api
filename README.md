@@ -183,17 +183,17 @@ client.Task.AnswerQuestion(mirage.AnswerQuestionRequest {
 * **Request:**
 
 ```go
-client.Task.SummarizeParagraphs({
-  "transcript": [
-    {
-      "text": "GPT-4 is getting worse over time, not better."
+client.Task.SummarizeParagraphs(mirage.SummarizeParagraphsRequest {
+  Transcript: []mirage.SummarizeParagraphsRequestTranscript {
+    mirage.SummarizeParagraphsRequestTranscript {
+      Text: "GPT-4 is getting worse over time, not better.",
     },
 
-    {
-      "text": "Many people have reported noticing a significant degradation in the quality of the model responses, but so far, it was all anecdotal."
-    }
-  ]
-});
+    mirage.SummarizeParagraphsRequestTranscript {
+      Text: "Many people have reported noticing a significant degradation in the quality of the model responses, but so far, it was all anecdotal.",
+    },
+  },
+})
 ```
 
 * **Response:**
@@ -216,19 +216,19 @@ client.Task.SummarizeParagraphs({
 * **Request:**
 
 ```go
-client.Task.SummarizeConversation({
-  "transcript": [
-    {
-      "name": "Valerian",
-      "text": "Hello! I have a question about the Crisp chatbot, I am trying to setup a week-end auto-responder, how can I do that?"
+client.Task.SummarizeConversation(mirage.SummarizeConversationRequest {
+  Transcript: []mirage.SummarizeConversationRequestTranscript {
+    mirage.SummarizeConversationRequestTranscript {
+      Name: "Valerian",
+      Text: "Hello! I have a question about the Crisp chatbot, I am trying to setup a week-end auto-responder, how can I do that?",
     },
 
-    {
-      "name": "Baptiste",
-      "text": "Hi. Baptiste here. I can provide you an example bot scenario that does just that if you'd like?"
-    }
-  ]
-});
+    mirage.SummarizeConversationRequestTranscript {
+      Name: "Baptiste",
+      Text: "Hi. Baptiste here. I can provide you an example bot scenario that does just that if you'd like?",
+    },
+  },
+})
 ```
 
 * **Response:**
@@ -251,23 +251,23 @@ client.Task.SummarizeConversation({
 * **Request:**
 
 ```go
-client.Task.CategorizeConversations({
-  "conversations": [
-    {
-      "transcript": [
-        {
-          "from": "customer",
-          "text": "Hello! I have a question about the Crisp chatbot, I am trying to setup a week-end auto-responder, how can I do that?"
+client.Task.CategorizeConversations(mirage.CategorizeConversationsRequest {
+  Conversations: []mirage.CategorizeConversationsRequestConversation {
+    mirage.CategorizeConversationsRequestConversation {
+      Transcript: []mirage.CategorizeConversationsRequestConversationTranscript {
+        mirage.CategorizeConversationsRequestConversationTranscript {
+          From: "customer",
+          Text: "Hello! I have a question about the Crisp chatbot, I am trying to setup a week-end auto-responder, how can I do that?",
         },
 
-        {
-          "from": "agent",
-          "text": "Hi. Baptiste here. I can provide you an example bot scenario that does just that if you'd like?"
-        }
-      ]
-    }
-  ]
-});
+        mirage.CategorizeConversationsRequestConversationTranscript {
+          From: "agent",
+          Text: "Hi. Baptiste here. I can provide you an example bot scenario that does just that if you'd like?",
+        },
+      },
+    },
+  },
+})
 ```
 
 * **Response:**
@@ -379,25 +379,25 @@ client.Task.TranslateText(mirage.TranslateTextRequest {
 * **Request:**
 
 ```go
-client.data.context_ingest({
-  "items": [
-    {
-      "operation": "index",
-      "primary_id": "pri_cf44dd72-4ba9-4754-8fb3-83c4261243c4",
-      "secondary_id": "sec_6693a4a2-e33f-4cce-ba90-b7b5b0922c46",
-      "tertiary_id": "ter_de2bd6e7-74e1-440d-9a23-01964cd4b7da",
+client.Task.IngestContextData(mirage.IngestContextDataRequest {
+  Items: []mirage.IngestContextDataRequestItem {
+    mirage.IngestContextDataRequestItem {
+      Operation: "index",
+      PrimaryID: "pri_cf44dd72-4ba9-4754-8fb3-83c4261243c4",
+      SecondaryID: "sec_6693a4a2-e33f-4cce-ba90-b7b5b0922c46",
+      TertiaryID: "ter_de2bd6e7-74e1-440d-9a23-01964cd4b7da",
 
-      "text": "Text to index here...",
-      "source": "chat",
-      "timestamp": 1682002198552,
+      Text: "Text to index here...",
+      Source: "chat",
+      Timestamp: 1682002198552,
 
-      "metadata": {
-        "custom_key": "custom_value",
-        "another_key": "another_value"
-      }
-    }
-  ]
-});
+      Metadata: {
+        CustomKey: "custom_value",
+        AnotherKey: "another_value",
+      },
+    },
+  },
+})
 ```
 
 * **Response:**
