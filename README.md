@@ -254,13 +254,13 @@ client.Task.SummarizeConversation(mirage.SummarizeConversationRequest {
 client.Task.CategorizeConversations(mirage.CategorizeConversationsRequest {
   Conversations: []mirage.CategorizeConversationsRequestConversation {
     mirage.CategorizeConversationsRequestConversation {
-      Transcript: []mirage.CategorizeConversationsRequestConversationTranscript {
-        mirage.CategorizeConversationsRequestConversationTranscript {
+      Transcript: []mirage.CategorizeConversationsRequestConversationMessage {
+        mirage.CategorizeConversationsRequestConversationMessage {
           From: "customer",
           Text: "Hello! I have a question about the Crisp chatbot, I am trying to setup a week-end auto-responder, how can I do that?",
         },
 
-        mirage.CategorizeConversationsRequestConversationTranscript {
+        mirage.CategorizeConversationsRequestConversationMessage {
           From: "agent",
           Text: "Hi. Baptiste here. I can provide you an example bot scenario that does just that if you'd like?",
         },
