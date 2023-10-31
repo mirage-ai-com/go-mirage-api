@@ -18,7 +18,7 @@ const (
 func main() {
   client := mirage.New(CONFIG_USER_ID, CONFIG_SECRET_KEY)
 
-  // Answer provided question
+  // Transcribe provided audio file
   data, err := client.Task.TranscribeSpeech(mirage.TranscribeSpeechRequest {
 	  Locale: mirage.TranscribeSpeechRequestLocale {
 	    To: "en",
