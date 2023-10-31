@@ -1,3 +1,3 @@
-module github.com/mirage-ai-com/go-mirage-api/mirage/v3
+module github.com/mirage-ai-com/go-mirage-api/mirage
 
 go 1.17
