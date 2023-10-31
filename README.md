@@ -11,6 +11,12 @@ Copyright 2023 Crisp IM SAS. See LICENSE for copying information.
 
 ## Usage
 
+Install the library:
+
+```bash
+go get github.com/mirage-ai-com/go-mirage-api@v1
+```
+
 Import the library:
 
 ```go

@@ -29,12 +29,9 @@ jobs:
 
       - name: Install dependencies
         run: go get
-        working-directory: ./mirage
 
       - name: Build code
         run: go build
-        working-directory: ./mirage
 
       - name: Test code
         run: go test
-        working-directory: ./mirage
