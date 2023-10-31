@@ -13,11 +13,11 @@ type CategorizeConversationsRequest struct {
 
 // CategorizeConversationsRequestConversation mapping
 type CategorizeConversationsRequestConversation struct {
-  Transcript  []CategorizeConversationsRequestConversationMessage  `json:"transcript"`
+  Transcript  []CategorizeConversationsRequestConversationTranscript  `json:"transcript"`
 }
 
-// CategorizeConversationsRequestConversationMessage mapping
-type CategorizeConversationsRequestConversationMessage struct {
+// CategorizeConversationsRequestConversationTranscript mapping
+type CategorizeConversationsRequestConversationTranscript struct {
   From  string  `json:"from"`
   Text  string  `json:"text"`
 }

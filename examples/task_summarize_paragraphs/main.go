@@ -20,12 +20,12 @@ func main() {
 
   // Summarize provided paragraphs
   data, err := client.Task.SummarizeParagraphs(mirage.SummarizeParagraphsRequest {
-    Transcript: []mirage.SummarizeParagraphsRequestTranscript {
-      mirage.SummarizeParagraphsRequestTranscript {
+    Paragraphs: []mirage.SummarizeParagraphsRequestParagraph {
+      mirage.SummarizeParagraphsRequestParagraph {
         Text: "GPT-4 is getting worse over time, not better.",
       },
 
-      mirage.SummarizeParagraphsRequestTranscript {
+      mirage.SummarizeParagraphsRequestParagraph {
         Text: "Many people have reported noticing a significant degradation in the quality of the model responses, but so far, it was all anecdotal.",
       },
     },
