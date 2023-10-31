@@ -18,62 +18,65 @@ const (
 func main() {
   client := mirage.New(CONFIG_USER_ID, CONFIG_SECRET_KEY)
 
-  // Answer provided question
-  data, err := client.Task.AnswerQuestion({
-    "question": "Should I pay more for that?",
+  // Generate answer data
+  answerStart := "Sure,"
 
-    "answer": {
-      "start": "Sure,"
+  // Answer provided question
+  data, err := client.Task.AnswerQuestion(mirage.AnswerQuestionRequest {
+    Question: "Should I pay more for that?",
+
+    Answer: &mirage.AnswerQuestionRequestAnswer {
+      Start: &answerStart,
     },
 
-    "context": {
-      "team": {
-        "id": "cf4ccdb5-df44-4668-a9e7-3ab31bebf89b",
-        "name": "Crisp"
+    Context: mirage.AnswerQuestionRequestContext {
+      Team: mirage.AnswerQuestionRequestContextTeam {
+        ID: "cf4ccdb5-df44-4668-a9e7-3ab31bebf89b",
+        Name: "Crisp",
       },
 
-      "transcripts": {
-        "conversation": {
-          "messages": [
-            {
-              "from": "customer",
-              "text": "Hey there!"
+      Transcripts: mirage.AnswerQuestionRequestContextTranscripts {
+        Conversation: mirage.AnswerQuestionRequestContextTranscriptsConversation {
+          Messages: []mirage.AnswerQuestionRequestContextTranscript {
+            mirage.AnswerQuestionRequestContextTranscript {
+              From: "customer",
+              Text: "Hey there!",
             },
 
-            {
-              "from": "agent",
-              "text": "Hi. How can I help?"
+            mirage.AnswerQuestionRequestContextTranscript {
+              From: "agent",
+              Text: "Hi. How can I help?",
             },
 
-            {
-              "from": "customer",
-              "text": "I want to add more sub-domains to my website."
-            }
-          ]
+            mirage.AnswerQuestionRequestContextTranscript {
+              From: "customer",
+              Text: "I want to add more sub-domains to my website.",
+            },
+          },
         },
 
-        "related": [
-          {
-            "messages": [
-              {
-                "from": "customer",
-                "text": "Hi, does the \"per website\" pricing include sub-domains?"
+        Related: &[]mirage.AnswerQuestionRequestContextTranscriptsRelated {
+          mirage.AnswerQuestionRequestContextTranscriptsRelated {
+            Messages: []mirage.AnswerQuestionRequestContextTranscript {
+              mirage.AnswerQuestionRequestContextTranscript {
+                From: "customer",
+                Text: "Hi, does the \"per website\" pricing include sub-domains?",
               },
 
-              {
-                "from": "agent",
-                "text": "Hi, yes, it includes sub-domains"
+              mirage.AnswerQuestionRequestContextTranscript {
+                From: "agent",
+                Text: "Hi, yes, it includes sub-domains",
               },
 
-              {
-                "from": "customer",
-                "text": "Perfect thanks!"
-              }
-            ]
-          }
-        ]
-      }
-    }
+              mirage.AnswerQuestionRequestContextTranscript {
+                From: "customer",
+                Text: "Perfect thanks!",
+              },
+            },
+          },
+        },
+      },
+    },
   })
 
   if err != nil {

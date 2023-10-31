@@ -23,6 +23,7 @@ type TranscribeSpeechRequestMedia struct {
   URL   string  `json:"url"`
 }
 
+
 // TranscribeSpeechResponseData mapping
 type TranscribeSpeechResponseData struct {
   Data  *TranscribeSpeechResponse  `json:"data"`
@@ -39,6 +40,7 @@ type TranscribeSpeechResponsePart struct {
   End    float32  `json:"end"`
   Text   string   `json:"text"`
 }
+
 
 // String returns the string representation of TranscribeSpeechResponse
 func (instance TranscribeSpeechResponse) String() string {
