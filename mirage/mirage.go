@@ -20,7 +20,7 @@ import (
 
 
 const (
-  libraryVersion = "3.0.1"
+  libraryVersion = "3.0.2"
   defaultRestEndpointURL = "https://api.mirage-ai.com/v1/"
   userAgent = "go-mirage-api/" + libraryVersion
   acceptContentType = "application/json"
