@@ -25,8 +25,8 @@ func main() {
 	  },
 
 	  Media: mirage.TranscribeSpeechRequestMedia {
-	    Type: "audio/mp3",
-	    URL: "https://storage.crisp.chat/users/upload/session/5acfdb5400c15c00/audio1681224631050_9elgef.mp3",
+	    Type: "audio/webm",
+	    URL: "https://files.mirage-ai.com/dash/terminal/samples/transcribe-speech/hey-there.weba",
 	  },
 	})
 
