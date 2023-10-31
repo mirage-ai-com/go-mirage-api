@@ -6,7 +6,7 @@
 package main
 
 import (
-  "github.com/mirage-ai-com/go-mirage-api/mirage"
+  "github.com/mirage-ai-com/go-mirage-api"
   "fmt"
 )
 
