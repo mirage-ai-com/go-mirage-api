@@ -119,49 +119,23 @@ client.Task.AnswerQuestion(mirage.AnswerQuestionRequest {
   },
 
   Context: mirage.AnswerQuestionRequestContext {
-    Team: mirage.AnswerQuestionRequestContextTeam {
-      ID: "cf4ccdb5-df44-4668-a9e7-3ab31bebf89b",
-      Name: "Crisp",
-    },
+    PrimaryID: "cf4ccdb5-df44-4668-a9e7-3ab31bebf89b",
 
-    Transcripts: mirage.AnswerQuestionRequestContextTranscripts {
-      Conversation: mirage.AnswerQuestionRequestContextTranscriptsConversation {
-        Messages: []mirage.AnswerQuestionRequestContextTranscript {
-          mirage.AnswerQuestionRequestContextTranscript {
-            From: "customer",
-            Text: "Hey there!",
-          },
-
-          mirage.AnswerQuestionRequestContextTranscript {
-            From: "agent",
-            Text: "Hi. How can I help?",
-          },
-
-          mirage.AnswerQuestionRequestContextTranscript {
-            From: "customer",
-            Text: "I want to add more sub-domains to my website.",
-          },
+    Conversation: mirage.AnswerQuestionRequestContextConversation {
+      Messages: []mirage.AnswerQuestionRequestContextConversationMessage {
+        mirage.AnswerQuestionRequestContextConversationMessage {
+          From: "customer",
+          Text: "Hey there!",
         },
-      },
 
-      Related: &[]mirage.AnswerQuestionRequestContextTranscriptsRelated {
-        mirage.AnswerQuestionRequestContextTranscriptsRelated {
-          Messages: []mirage.AnswerQuestionRequestContextTranscript {
-            mirage.AnswerQuestionRequestContextTranscript {
-              From: "customer",
-              Text: "Hi, does the \"per website\" pricing include sub-domains?",
-            },
+        mirage.AnswerQuestionRequestContextConversationMessage {
+          From: "agent",
+          Text: "Hi. How can I help?",
+        },
 
-            mirage.AnswerQuestionRequestContextTranscript {
-              From: "agent",
-              Text: "Hi, yes, it includes sub-domains",
-            },
-
-            mirage.AnswerQuestionRequestContextTranscript {
-              From: "customer",
-              Text: "Perfect thanks!",
-            },
-          },
+        mirage.AnswerQuestionRequestContextConversationMessage {
+          From: "customer",
+          Text: "I want to add more sub-domains to my website.",
         },
       },
     },
@@ -300,13 +274,10 @@ client.Task.CategorizeConversations(mirage.CategorizeConversationsRequest {
 ```go
 client.Task.RankQuestion(mirage.RankQuestionRequest {
   Question: "Hi! I am having issues setting up DNS records for my Crisp helpdesk. Can you help?",
-  Source: "helpdesk",
 
   Context: mirage.RankQuestionRequestContext {
-    Team: mirage.RankQuestionRequestContextTeam {
-      ID: "cf4ccdb5-df44-4668-a9e7-3ab31bebf89b",
-      Name: "Crisp",
-    },
+    Source: "helpdesk",
+    PrimaryID: "cf4ccdb5-df44-4668-a9e7-3ab31bebf89b",
   },
 })
 ```

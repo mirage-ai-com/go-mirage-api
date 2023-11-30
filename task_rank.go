@@ -9,19 +9,13 @@ package mirage
 // RankQuestionRequest mapping
 type RankQuestionRequest struct {
   Question  string                      `json:"question"`
-  Source    string                      `json:"source"`
   Context   RankQuestionRequestContext  `json:"context"`
 }
 
 // RankQuestionRequestContext mapping
 type RankQuestionRequestContext struct {
-  Team  RankQuestionRequestContextTeam  `json:"team"`
-}
-
-// RankQuestionRequestContextTeam mapping
-type RankQuestionRequestContextTeam struct {
-  ID    string  `json:"id"`
-  Name  string  `json:"name"`
+  Source     string  `json:"source"`
+  PrimaryID  string  `json:"primary_id"`
 }
 
 

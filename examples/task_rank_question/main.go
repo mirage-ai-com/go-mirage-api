@@ -21,13 +21,10 @@ func main() {
   // Rank provided question results
   data, err := client.Task.RankQuestion(mirage.RankQuestionRequest {
     Question: "Hi! I am having issues setting up DNS records for my Crisp helpdesk. Can you help?",
-    Source: "helpdesk",
 
     Context: mirage.RankQuestionRequestContext {
-      Team: mirage.RankQuestionRequestContextTeam {
-        ID: "cf4ccdb5-df44-4668-a9e7-3ab31bebf89b",
-        Name: "Crisp",
-      },
+      Source: "helpdesk",
+      PrimaryID: "cf4ccdb5-df44-4668-a9e7-3ab31bebf89b",
     },
   })
 

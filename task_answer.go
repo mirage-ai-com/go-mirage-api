@@ -26,34 +26,18 @@ type AnswerQuestionRequestLocale struct {
 
 // AnswerQuestionRequestContext mapping
 type AnswerQuestionRequestContext struct {
-  Team         AnswerQuestionRequestContextTeam         `json:"team"`
-  Transcripts  AnswerQuestionRequestContextTranscripts  `json:"transcripts"`
+  Source        *string                                   `json:"source,omitempty"`
+  PrimaryID     string                                    `json:"primary_id"`
+  Conversation  AnswerQuestionRequestContextConversation  `json:"conversation"`
 }
 
-// AnswerQuestionRequestContextTeam mapping
-type AnswerQuestionRequestContextTeam struct {
-  ID    string  `json:"id"`
-  Name  string  `json:"name"`
+// AnswerQuestionRequestContextConversation mapping
+type AnswerQuestionRequestContextConversation struct {
+	Messages  []AnswerQuestionRequestContextConversationMessage  `json:"messages"`
 }
 
-// AnswerQuestionRequestContextTranscripts mapping
-type AnswerQuestionRequestContextTranscripts struct {
-	Conversation  AnswerQuestionRequestContextTranscriptsConversation  `json:"conversation"`
-	Related   		*[]AnswerQuestionRequestContextTranscriptsRelated    `json:"related,omitempty"`
-}
-
-// AnswerQuestionRequestContextTranscriptsConversation mapping
-type AnswerQuestionRequestContextTranscriptsConversation struct {
-	Messages  []AnswerQuestionRequestContextTranscript  `json:"messages"`
-}
-
-// AnswerQuestionRequestContextTranscriptsRelated mapping
-type AnswerQuestionRequestContextTranscriptsRelated struct {
-	Messages  []AnswerQuestionRequestContextTranscript  `json:"messages"`
-}
-
-// AnswerQuestionRequestContextTranscript mapping
-type AnswerQuestionRequestContextTranscript struct {
+// AnswerQuestionRequestContextConversationMessage mapping
+type AnswerQuestionRequestContextConversationMessage struct {
 	From  string  `json:"from"`
 	Text  string  `json:"text"`
 }
