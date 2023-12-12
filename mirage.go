@@ -20,7 +20,7 @@ import (
 
 
 const (
-  libraryVersion = "1.3.3"
+  libraryVersion = "1.3.4"
   defaultRestEndpointURL = "https://api.mirage-ai.com/v1/"
   userAgent = "go-mirage-api/" + libraryVersion
   acceptContentType = "application/json"
@@ -167,6 +167,9 @@ func (client *Client) Do(req *http.Request, v interface{}) (*Response, error) {
   }
 
   resp, err := client.client.Do(req)
+  if err != nil {
+    return nil, err
+  }
 
   defer func() {
     io.CopyN(ioutil.Discard, resp.Body, 512)
