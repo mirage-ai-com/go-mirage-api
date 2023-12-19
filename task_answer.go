@@ -8,7 +8,7 @@ package mirage
 
 // AnswerQuestionRequest mapping
 type AnswerQuestionRequest struct {
-  Question  string  											 `json:"question"`
+  Question  string                         `json:"question"`
   Answer    *AnswerQuestionRequestAnswer   `json:"answer,omitempty"`
   Locale    *AnswerQuestionRequestLocale   `json:"locale,omitempty"`
   Context   AnswerQuestionRequestContext   `json:"context"`
@@ -42,29 +42,46 @@ type AnswerQuestionRequestContextConversationMessage struct {
 	Text  string  `json:"text"`
 }
 
-
-// AnswerQuestionResponseData mapping
-type AnswerQuestionResponseData struct {
-  Data  *AnswerQuestionResponse  `json:"data"`
+// AnswerPromptRequest mapping
+type AnswerPromptRequest struct {
+  Prompt string `json:"prompt"`
 }
 
-// AnswerQuestionResponse mapping
-type AnswerQuestionResponse struct {
+// AnswerGenericResponseData mapping
+type AnswerGenericResponseData struct {
+  Data  *AnswerGenericResponse  `json:"data"`
+}
+
+// AnswerGenericResponse mapping
+type AnswerGenericResponse struct {
   Answer  string  `json:"answer"`
 }
 
 
-// String returns the string representation of AnswerQuestionResponse
-func (instance AnswerQuestionResponse) String() string {
+// String returns the string representation of AnswerGenericResponse
+func (instance AnswerGenericResponse) String() string {
   return Stringify(instance)
 }
 
 
 // AnswerQuestion answer a given question.
-func (service *TaskService) AnswerQuestion(data AnswerQuestionRequest) (*AnswerQuestionResponse, error) {
+func (service *TaskService) AnswerQuestion(data AnswerQuestionRequest) (*AnswerGenericResponse, error) {
   req, _ := service.client.NewRequest("POST", "task/answer/question", data)
 
-  result := new(AnswerQuestionResponseData)
+  result := new(AnswerGenericResponseData)
+  _, err := service.client.Do(req, result)
+  if err != nil {
+    return nil, err
+  }
+
+  return result.Data, err
+}
+
+// AnswerPrompt answer a given prompt.
+func (service *TaskService) AnswerPrompt(data AnswerPromptRequest) (*AnswerGenericResponse, error) {
+  req, _ := service.client.NewRequest("POST", "task/answer/prompt", data)
+
+  result := new(AnswerGenericResponseData)
   _, err := service.client.Do(req, result)
   if err != nil {
     return nil, err
