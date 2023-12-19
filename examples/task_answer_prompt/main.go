@@ -18,9 +18,6 @@ const (
 func main() {
   client := mirage.New(CONFIG_USER_ID, CONFIG_SECRET_KEY)
 
-  // Generate answer data
-  answerStart := "Sure,"
-
   // Answer provided prompt
   data, err := client.Task.AnswerPrompt(mirage.AnswerPromptRequest {
     Prompt: "Generate an article about Alpacas",
