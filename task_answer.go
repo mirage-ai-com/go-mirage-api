@@ -6,6 +6,11 @@
 package mirage
 
 
+// AnswerPromptRequest mapping
+type AnswerPromptRequest struct {
+  Prompt  string  `json:"prompt"`
+}
+
 // AnswerQuestionRequest mapping
 type AnswerQuestionRequest struct {
   Question  string                         `json:"question"`
@@ -42,33 +47,43 @@ type AnswerQuestionRequestContextConversationMessage struct {
 	Text  string  `json:"text"`
 }
 
-// AnswerPromptRequest mapping
-type AnswerPromptRequest struct {
-  Prompt string `json:"prompt"`
+// AnswerPromptResponseData mapping
+type AnswerPromptResponseData struct {
+  Data  *AnswerPromptResponse  `json:"data"`
 }
 
-// AnswerGenericResponseData mapping
-type AnswerGenericResponseData struct {
-  Data  *AnswerGenericResponse  `json:"data"`
+// AnswerPromptResponse mapping
+type AnswerPromptResponse struct {
+  Answer  string  `json:"answer"`
 }
 
-// AnswerGenericResponse mapping
-type AnswerGenericResponse struct {
+// AnswerQuestionResponseData mapping
+type AnswerQuestionResponseData struct {
+  Data  *AnswerQuestionResponse  `json:"data"`
+}
+
+// AnswerQuestionResponse mapping
+type AnswerQuestionResponse struct {
   Answer  string  `json:"answer"`
 }
 
 
-// String returns the string representation of AnswerGenericResponse
-func (instance AnswerGenericResponse) String() string {
+// String returns the string representation of AnswerPromptResponse
+func (instance AnswerPromptResponse) String() string {
+  return Stringify(instance)
+}
+
+// String returns the string representation of AnswerQuestionResponse
+func (instance AnswerQuestionResponse) String() string {
   return Stringify(instance)
 }
 
 
-// AnswerQuestion answer a given question.
-func (service *TaskService) AnswerQuestion(data AnswerQuestionRequest) (*AnswerGenericResponse, error) {
-  req, _ := service.client.NewRequest("POST", "task/answer/question", data)
+// AnswerPrompt answer a given prompt.
+func (service *TaskService) AnswerPrompt(data AnswerPromptRequest) (*AnswerPromptResponse, error) {
+  req, _ := service.client.NewRequest("POST", "task/answer/prompt", data)
 
-  result := new(AnswerGenericResponseData)
+  result := new(AnswerPromptResponseData)
   _, err := service.client.Do(req, result)
   if err != nil {
     return nil, err
@@ -77,11 +92,12 @@ func (service *TaskService) AnswerQuestion(data AnswerQuestionRequest) (*AnswerG
   return result.Data, err
 }
 
-// AnswerPrompt answer a given prompt.
-func (service *TaskService) AnswerPrompt(data AnswerPromptRequest) (*AnswerGenericResponse, error) {
-  req, _ := service.client.NewRequest("POST", "task/answer/prompt", data)
 
-  result := new(AnswerGenericResponseData)
+// AnswerQuestion answer a given question.
+func (service *TaskService) AnswerQuestion(data AnswerQuestionRequest) (*AnswerQuestionResponse, error) {
+  req, _ := service.client.NewRequest("POST", "task/answer/question", data)
+
+  result := new(AnswerQuestionResponseData)
   _, err := service.client.Do(req, result)
   if err != nil {
     return nil, err
