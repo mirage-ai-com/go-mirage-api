@@ -44,7 +44,7 @@ type AnswerQuestionRequestContextConversationMessage struct {
 
 // AnswerPromptRequest mapping
 type AnswerPromptRequest struct {
-  Prompt string `json:"question"`
+  Prompt string `json:"prompt"`
 }
 
 // AnswerGenericResponseData mapping
