@@ -371,6 +371,34 @@ client.Task.TranslateText(mirage.TranslateTextRequest {
 }
 ```
 
+#### ➡️ Fraud Spamicity
+
+* **Method:** `client.Task.FraudSpamicity(data)`
+* **Reference:** [Fraud Spamicity](https://docs.mirage-ai.com/references/api/v1/#fraud-spamicity)
+
+* **Request:**
+
+```go
+client.Task.FraudSpamicity(mirage.FraudSpamicityRequest {
+  Name: "Crisp",
+  Domain: "crisp.chat",
+  EmailDomain: "mail.crisp.chat",
+})
+```
+
+* **Response:**
+
+```json
+{
+  "reason": "processed",
+
+  "data": {
+    "fraud": false,
+    "score": 0.13
+  }
+}
+```
+
 ### Data API
 
 #### ➡️ Context Ingest
