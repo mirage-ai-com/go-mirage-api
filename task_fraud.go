@@ -21,8 +21,8 @@ type FraudSpamicityResponseData struct {
 
 // FraudSpamicityResponse mapping
 type FraudSpamicityResponse struct {
-  Fraud  bool  `json:"fraud"`
-  Score  f16   `json:"score"`
+  Fraud  bool     `json:"fraud"`
+  Score  float32  `json:"score"`
 }
 
 
