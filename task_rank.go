@@ -14,8 +14,22 @@ type RankQuestionRequest struct {
 
 // RankQuestionRequestContext mapping
 type RankQuestionRequestContext struct {
-  Source     *string  `json:"source,omitempty"`
-  PrimaryID  string   `json:"primary_id"`
+  Source     *string                             `json:"source,omitempty"`
+  PrimaryID  string                              `json:"primary_id"`
+  Filters    *RankQuestionRequestContextFilters  `json:"filters,omitempty"`
+}
+
+// RankQuestionRequestContextFilters mapping
+type RankQuestionRequestContextFilters struct {
+  SecondaryID  *RankQuestionRequestContextFiltersFilter  `json:"secondary_id,omitempty"`
+  TertiaryID   *RankQuestionRequestContextFiltersFilter  `json:"tertiary_id,omitempty"`
+  Source       *RankQuestionRequestContextFiltersFilter  `json:"source,omitempty"`
+}
+
+// RankQuestionRequestContextFiltersFilter mapping
+type RankQuestionRequestContextFiltersFilter struct {
+  Include  *[]string  `json:"include,omitempty"`
+  Exclude  *[]string  `json:"exclude,omitempty"`
 }
 
 

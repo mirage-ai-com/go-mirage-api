@@ -33,7 +33,21 @@ type AnswerQuestionRequestLocale struct {
 type AnswerQuestionRequestContext struct {
   Source        *string                                   `json:"source,omitempty"`
   PrimaryID     string                                    `json:"primary_id"`
+  Filters       *AnswerQuestionRequestContextFilters      `json:"filters,omitempty"`
   Conversation  AnswerQuestionRequestContextConversation  `json:"conversation"`
+}
+
+// AnswerQuestionRequestContextFilters mapping
+type AnswerQuestionRequestContextFilters struct {
+  SecondaryID  *AnswerQuestionRequestContextFiltersFilter  `json:"secondary_id,omitempty"`
+  TertiaryID   *AnswerQuestionRequestContextFiltersFilter  `json:"tertiary_id,omitempty"`
+  Source       *AnswerQuestionRequestContextFiltersFilter  `json:"source,omitempty"`
+}
+
+// AnswerQuestionRequestContextFiltersFilter mapping
+type AnswerQuestionRequestContextFiltersFilter struct {
+  Include  *[]string  `json:"include,omitempty"`
+  Exclude  *[]string  `json:"exclude,omitempty"`
 }
 
 // AnswerQuestionRequestContextConversation mapping
