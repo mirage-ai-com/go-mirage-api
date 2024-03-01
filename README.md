@@ -297,11 +297,13 @@ client.Task.CategorizeConversations(mirage.CategorizeConversationsRequest {
 * **Request:**
 
 ```go
+rankSource := "helpdesk"
+
 client.Task.RankQuestion(mirage.RankQuestionRequest {
   Question: "Hi! I am having issues setting up DNS records for my Crisp helpdesk. Can you help?",
 
   Context: mirage.RankQuestionRequestContext {
-    Source: "helpdesk",
+    Source: &rankSource,
     PrimaryID: "cf4ccdb5-df44-4668-a9e7-3ab31bebf89b",
   },
 })

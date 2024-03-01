@@ -14,8 +14,8 @@ type RankQuestionRequest struct {
 
 // RankQuestionRequestContext mapping
 type RankQuestionRequestContext struct {
-  Source     string  `json:"source"`
-  PrimaryID  string  `json:"primary_id"`
+  Source     *string  `json:"source,omitempty"`
+  PrimaryID  string   `json:"primary_id"`
 }
 
 
