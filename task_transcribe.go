@@ -35,6 +35,7 @@ type TranscribeSpeechResponse struct {
   Parts   []TranscribeSpeechResponsePart  `json:"parts"`
 }
 
+// TranscribeSpeechResponse mapping
 type TranscribeSpeechResponsePart struct {
   Start  float32  `json:"start"`
   End    float32  `json:"end"`
