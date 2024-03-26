@@ -175,7 +175,8 @@ client.Task.AnswerQuestion(mirage.AnswerQuestionRequest {
   "reason": "processed",
 
   "data": {
-    "answer": "You can add the Crisp chatbox to your website by following this guide: https://help.crisp.chat/en/article/how-to-add-crisp-chatbox-to-your-website-dkrg1d/ :)"
+    "answer": "You can add the Crisp chatbox to your website by following this guide: https://help.crisp.chat/en/article/how-to-add-crisp-chatbox-to-your-website-dkrg1d/ :)",
+    "sources": []
   }
 }
 ```
