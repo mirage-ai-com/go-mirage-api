@@ -78,7 +78,16 @@ type AnswerQuestionResponseData struct {
 
 // AnswerQuestionResponse mapping
 type AnswerQuestionResponse struct {
-  Answer  string  `json:"answer"`
+  Answer   string                          `json:"answer"`
+  Sources  []AnswerQuestionResponseSource  `json:"sources"`
+}
+
+// AnswerQuestionResponseSource mapping
+type AnswerQuestionResponseSource struct {
+  PrimaryID    string              `json:"primary_id"`
+  SecondaryID  *string             `json:"secondary_id,omitempty"`
+  Source       *string             `json:"source,omitempty"`
+  Metadata     *map[string]string  `json:"metadata,omitempty"`
 }
 
 
