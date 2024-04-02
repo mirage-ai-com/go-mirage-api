@@ -21,7 +21,8 @@ type AnswerQuestionRequest struct {
 
 // AnswerQuestionRequestAnswer mapping
 type AnswerQuestionRequestAnswer struct {
-  Start  *string  `json:"start,omitempty"`
+  Start    *string  `json:"start,omitempty"`
+  Quality  *uint8   `json:"quality,omitempty"`
 }
 
 // AnswerQuestionRequestLocale mapping
