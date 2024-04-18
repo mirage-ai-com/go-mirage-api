@@ -24,7 +24,7 @@ const (
   defaultRestEndpointURL = "https://api.mirage-ai.com/v1/"
   userAgent = "go-mirage-api/" + libraryVersion
   acceptContentType = "application/json"
-  clientTimeout = 10
+  clientTimeout = 40
   clientIdleConnTimeout = 45
   clientMaxIdleConns = 16
   clientMaxConnsPerHost = 64
