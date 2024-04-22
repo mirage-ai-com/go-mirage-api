@@ -8,15 +8,17 @@ package mirage
 
 // AnswerPromptRequest mapping
 type AnswerPromptRequest struct {
-  Prompt  string  `json:"prompt"`
+  Prompt  string   `json:"prompt"`
+  Model   *string  `json:"model,omitempty"`
 }
 
 // AnswerQuestionRequest mapping
 type AnswerQuestionRequest struct {
-  Question  string                         `json:"question"`
-  Answer    *AnswerQuestionRequestAnswer   `json:"answer,omitempty"`
-  Locale    *AnswerQuestionRequestLocale   `json:"locale,omitempty"`
-  Context   AnswerQuestionRequestContext   `json:"context"`
+  Question  string                        `json:"question"`
+  Answer    *AnswerQuestionRequestAnswer  `json:"answer,omitempty"`
+  Locale    *AnswerQuestionRequestLocale  `json:"locale,omitempty"`
+  Context   AnswerQuestionRequestContext  `json:"context"`
+  Model     *string                       `json:"model,omitempty"`
 }
 
 // AnswerQuestionRequestAnswer mapping
