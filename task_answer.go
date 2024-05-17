@@ -90,9 +90,11 @@ type AnswerQuestionResponse struct {
 
 // AnswerQuestionResponseSource mapping
 type AnswerQuestionResponseSource struct {
+  Source       *string             `json:"source,omitempty"`
+  Score        *uint8              `json:"score,omitempty"`
   PrimaryID    string              `json:"primary_id"`
   SecondaryID  *string             `json:"secondary_id,omitempty"`
-  Source       *string             `json:"source,omitempty"`
+  Excerpt      *string             `json:"excerpt,omitempty"`
   Metadata     *map[string]string  `json:"metadata,omitempty"`
 }
 
