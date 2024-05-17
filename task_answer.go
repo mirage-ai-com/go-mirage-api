@@ -73,6 +73,7 @@ type AnswerPromptResponseData struct {
 // AnswerPromptResponse mapping
 type AnswerPromptResponse struct {
   Answer  string  `json:"answer"`
+  Model   string  `json:"model"`
 }
 
 // AnswerQuestionResponseData mapping
@@ -83,6 +84,7 @@ type AnswerQuestionResponseData struct {
 // AnswerQuestionResponse mapping
 type AnswerQuestionResponse struct {
   Answer   string                          `json:"answer"`
+  Model    string                          `json:"model"`
   Sources  []AnswerQuestionResponseSource  `json:"sources"`
 }
 

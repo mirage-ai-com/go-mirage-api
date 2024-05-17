@@ -121,7 +121,8 @@ client.Task.AnswerPrompt(mirage.AnswerPromptRequest {
   "reason": "processed",
 
   "data": {
-    "answer": "The alpaca (Lama pacos) is a species of South American camelid mammal. It is similar to, and often confused with, the llama. However, alpacas are often noticeably smaller than llamas. The two animals are closely related and can successfully crossbreed. Both species are believed to have been domesticated from their wild relatives, the vicuña and guanaco. There are two breeds of alpaca: the Suri alpaca and the Huacaya alpaca."
+    "answer": "The alpaca (Lama pacos) is a species of South American camelid mammal. It is similar to, and often confused with, the llama. However, alpacas are often noticeably smaller than llamas. The two animals are closely related and can successfully crossbreed. Both species are believed to have been domesticated from their wild relatives, the vicuña and guanaco. There are two breeds of alpaca: the Suri alpaca and the Huacaya alpaca.",
+    "model": "medium"
   }
 }
 ```
@@ -176,6 +177,7 @@ client.Task.AnswerQuestion(mirage.AnswerQuestionRequest {
 
   "data": {
     "answer": "You can add the Crisp chatbox to your website by following this guide: https://help.crisp.chat/en/article/how-to-add-crisp-chatbox-to-your-website-dkrg1d/ :)",
+    "model": "medium",
     "sources": []
   }
 }
