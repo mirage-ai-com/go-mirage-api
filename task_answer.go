@@ -95,6 +95,7 @@ type AnswerQuestionResponseSource struct {
   PrimaryID    string              `json:"primary_id"`
   SecondaryID  *string             `json:"secondary_id,omitempty"`
   Excerpt      *string             `json:"excerpt,omitempty"`
+  Timestamp    *uint64             `json:"timestamp,omitempty"`
   Metadata     *map[string]string  `json:"metadata,omitempty"`
 }
 

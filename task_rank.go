@@ -57,6 +57,7 @@ type RankQuestionResponseResultsItem struct {
   PrimaryID    *string       `json:"primary_id,omitempty"`
   SecondaryID  *string       `json:"secondary_id,omitempty"`
   Text         *string       `json:"text,omitempty"`
+  Timestamp    *uint64       `json:"timestamp,omitempty"`
   Metadata     *interface{}  `json:"metadata,omitempty"`
 }
 
