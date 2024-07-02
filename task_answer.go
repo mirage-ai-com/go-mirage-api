@@ -8,8 +8,9 @@ package mirage
 
 // AnswerPromptRequest mapping
 type AnswerPromptRequest struct {
-  Prompt  string   `json:"prompt"`
-  Model   *string  `json:"model,omitempty"`
+  Prompt  string        `json:"prompt"`
+  Schema  *interface{}  `json:"schema,omitempty"`
+  Model   *string       `json:"model,omitempty"`
 }
 
 // AnswerQuestionRequest mapping
@@ -72,8 +73,8 @@ type AnswerPromptResponseData struct {
 
 // AnswerPromptResponse mapping
 type AnswerPromptResponse struct {
-  Answer  string  `json:"answer"`
-  Model   string  `json:"model"`
+  Answer  interface{}  `json:"answer"`
+  Model   string       `json:"model"`
 }
 
 // AnswerQuestionResponseData mapping
