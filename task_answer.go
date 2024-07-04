@@ -73,8 +73,8 @@ type AnswerPromptResponseData struct {
 
 // AnswerPromptResponse mapping
 type AnswerPromptResponse struct {
-  Answer  interface{}  `json:"answer"`
-  Model   string       `json:"model"`
+  Answer  string  `json:"answer"`
+  Model   string  `json:"model"`
 }
 
 // AnswerQuestionResponseData mapping
