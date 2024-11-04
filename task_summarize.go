@@ -8,7 +8,13 @@ package mirage
 
 // SummarizeParagraphsRequest mapping
 type SummarizeParagraphsRequest struct {
+  *Locale     SummarizeParagraphsRequestLocale       `json:"locale,omitempty"`
   Paragraphs  []SummarizeParagraphsRequestParagraph  `json:"paragraphs"`
+}
+
+// SummarizeParagraphsRequestLocale mapping
+type SummarizeParagraphsRequestLocale struct {
+  To  string  `json:"to"`
 }
 
 // SummarizeParagraphsRequestParagraph mapping
@@ -18,7 +24,13 @@ type SummarizeParagraphsRequestParagraph struct {
 
 // SummarizeConversationRequest mapping
 type SummarizeConversationRequest struct {
+  *Locale     SummarizeConversationRequestLocale        `json:"locale,omitempty"`
   Transcript  []SummarizeConversationRequestTranscript  `json:"transcript"`
+}
+
+// SummarizeConversationRequestLocale mapping
+type SummarizeConversationRequestLocale struct {
+  To  string  `json:"to"`
 }
 
 // SummarizeConversationRequestTranscript mapping
