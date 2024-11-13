@@ -8,9 +8,16 @@ package mirage
 
 // AnswerPromptRequest mapping
 type AnswerPromptRequest struct {
-  Prompt  string        `json:"prompt"`
-  Schema  *interface{}  `json:"schema,omitempty"`
-  Model   *string       `json:"model,omitempty"`
+  Prompt  string                      `json:"prompt"`
+  Answer  *AnswerPromptRequestAnswer  `json:"answer,omitempty"`
+  Schema  *interface{}                `json:"schema,omitempty"`
+  Model   *string                     `json:"model,omitempty"`
+}
+
+// AnswerPromptRequestAnswer mapping
+type AnswerPromptRequestAnswer struct {
+  MaxTokens    *uint16   `json:"max_tokens,omitempty"`
+  Temperature  *float32  `json:"temperature,omitempty"`
 }
 
 // AnswerQuestionRequest mapping
@@ -24,9 +31,11 @@ type AnswerQuestionRequest struct {
 
 // AnswerQuestionRequestAnswer mapping
 type AnswerQuestionRequestAnswer struct {
-  Start    *string  `json:"start,omitempty"`
-  System   *string  `json:"system,omitempty"`
-  Quality  *uint8   `json:"quality,omitempty"`
+  Start        *string   `json:"start,omitempty"`
+  System       *string   `json:"system,omitempty"`
+  Quality      *uint8    `json:"quality,omitempty"`
+  MaxTokens    *uint16   `json:"max_tokens,omitempty"`
+  Temperature  *float32  `json:"temperature,omitempty"`
 }
 
 // AnswerQuestionRequestLocale mapping
