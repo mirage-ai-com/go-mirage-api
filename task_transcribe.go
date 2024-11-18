@@ -8,7 +8,7 @@ package mirage
 
 // TranscribeSpeechRequest mapping
 type TranscribeSpeechRequest struct {
-  Locale  TranscribeSpeechRequestLocale  `json:"locale"`
+  Locale  *TranscribeSpeechRequestLocale `json:"locale,omitempty"`
   Media   TranscribeSpeechRequestMedia   `json:"media"`
 }
 
