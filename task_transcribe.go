@@ -19,7 +19,7 @@ type TranscribeSpeechRequestLocale struct {
 
 // TranscribeSpeechRequestMedia mapping
 type TranscribeSpeechRequestMedia struct {
-  Type  string  `json:"type"`
+  Type  string  `json:"type,omitempty"`
   URL   string  `json:"url"`
 }
 
