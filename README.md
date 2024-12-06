@@ -405,6 +405,44 @@ client.Task.FraudSpamicity(mirage.FraudSpamicityRequest {
 }
 ```
 
+#### ➡️ Spam Classify
+
+* **Method:** `client.Task.SpamClassify(data)`
+* **Reference:** [Spam Classify](https://docs.mirage-ai.com/references/api/v1/#spam-classify)
+
+* **Request:**
+
+```go
+client.Task.SpamClassify(mirage.SpamClassifyRequest {
+  Sender: mirage.SpamClassifyRequestSender {
+    Name: "John Doe",
+    Email: "john@example.com",
+  },
+
+  Transcript: []mirage.SpamClassifyRequestTranscript {
+    mirage.SpamClassifyRequestTranscript {
+      From: "customer",
+      Origin: "chat",
+      Text: "Hello, I would like to discuss your services",
+    },
+  },
+})
+```
+
+* **Response:**
+
+```json
+{
+  "reason": "processed",
+
+  "data": {
+    "class": "spam",
+    "confidence": 0.13,
+    "logprob": -0.10
+  }
+}
+```
+
 ### Data API
 
 #### ➡️ Context Ingest
