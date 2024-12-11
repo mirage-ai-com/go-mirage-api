@@ -441,10 +441,10 @@ client.Task.SpamClassify(mirage.SpamClassifyRequest {
     "logprob": -0.10,
 
     "scores": {
-        "gibberish": 0.0,
-        "marketing": 0.45,
-        "regular": 0.0,
-        "spam": 0.93
+      "gibberish": 0.0,
+      "marketing": 0.45,
+      "regular": 0.0,
+      "spam": 0.93
     }
   }
 }

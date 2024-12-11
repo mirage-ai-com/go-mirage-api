@@ -33,10 +33,10 @@ type SpamClassifyResponseData struct {
 
 // SpamClassifyResponse mapping
 type SpamClassifyResponse struct {
-  Class       string                     `json:"class"`
-  Confidence  float32                    `json:"confidence"`
-  LogProb     float32                    `json:"logprob"`
-  Scores      SpamClassifyResponseScores `json:"scores"`
+  Class       string                      `json:"class"`
+  Confidence  float32                     `json:"confidence"`
+  LogProb     float32                     `json:"logprob"`
+  Scores      SpamClassifyResponseScores  `json:"scores"`
 }
 
 // SpamClassifyResponseScores mapping
@@ -46,6 +46,7 @@ type SpamClassifyResponseScores struct {
   Regular    float32  `json:"regular"`
   Spam       float32  `json:"spam"`
 }
+
 
 // String returns the string representation of SpamClassifyResponse
 func (instance SpamClassifyResponse) String() string {
