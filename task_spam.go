@@ -39,6 +39,7 @@ type SpamClassifyResponse struct {
   Scores      SpamClassifyResponseScores `json:"scores"`
 }
 
+// SpamClassifyResponseScores mapping
 type SpamClassifyResponseScores struct {
   Gibberish  float32  `json:"gibberish"`
   Marketing  float32  `json:"marketing"`
