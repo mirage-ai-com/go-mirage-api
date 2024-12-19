@@ -32,7 +32,7 @@ client := mirage.New("ui_xxxxxx", "sk_xxxxxx")
 Then, consume the client eg. to transcribe a audio file containing speech to text:
 
 ```go
-data, err := client.Task.TranscribeSpeech(mirage.TranscribeSpeechRequest {
+data, err := client.Task.TranscribeSpeech(mirage.RequestContext{}, mirage.TranscribeSpeechRequest {
   Locale: mirage.TranscribeSpeechRequestLocale {
     To: "en",
   },
@@ -63,13 +63,13 @@ This library implements all methods the Mirage API provides. See the [API docs](
 
 #### ➡️ Transcribe Speech
 
-* **Method:** `client.Task.TranscribeSpeech(data)`
+* **Method:** `client.Task.TranscribeSpeech(ctx, data)`
 * **Reference:** [Transcribe Speech](https://docs.mirage-ai.com/references/api/v1/#transcribe-speech)
 
 * **Request:**
 
 ```go
-client.Task.TranscribeSpeech(mirage.TranscribeSpeechRequest {
+client.Task.TranscribeSpeech(mirage.RequestContext{}, mirage.TranscribeSpeechRequest {
   Locale: mirage.TranscribeSpeechRequestLocale {
     To: "en",
   },
@@ -103,13 +103,13 @@ client.Task.TranscribeSpeech(mirage.TranscribeSpeechRequest {
 
 #### ➡️ Answer Prompt
 
-* **Method:** `client.Task.AnswerPrompt(data)`
+* **Method:** `client.Task.AnswerPrompt(ctx, data)`
 * **Reference:** [Answer Prompt](https://docs.mirage-ai.com/references/api/v1/#answer-prompt)
 
 * **Request:**
 
 ```go
-client.Task.AnswerPrompt(mirage.AnswerPromptRequest {
+client.Task.AnswerPrompt(mirage.RequestContext{}, mirage.AnswerPromptRequest {
   Prompt: "Generate an article about Alpacas",
 })
 ```
@@ -129,7 +129,7 @@ client.Task.AnswerPrompt(mirage.AnswerPromptRequest {
 
 #### ➡️ Answer Question
 
-* **Method:** `client.Task.AnswerQuestion(data)`
+* **Method:** `client.Task.AnswerQuestion(ctx, data)`
 * **Reference:** [Answer Question](https://docs.mirage-ai.com/references/api/v1/#answer-question)
 
 * **Request:**
@@ -137,7 +137,7 @@ client.Task.AnswerPrompt(mirage.AnswerPromptRequest {
 ```go
 answerStart := "Sure,"
 
-client.Task.AnswerQuestion(mirage.AnswerQuestionRequest {
+client.Task.AnswerQuestion(mirage.RequestContext{}, mirage.AnswerQuestionRequest {
   Question: "Should I pay more for that?",
 
   Answer: &mirage.AnswerQuestionRequestAnswer {
@@ -185,13 +185,13 @@ client.Task.AnswerQuestion(mirage.AnswerQuestionRequest {
 
 #### ➡️ Summarize Paragraphs
 
-* **Method:** `client.Task.SummarizeParagraphs(data)`
+* **Method:** `client.Task.SummarizeParagraphs(ctx, data)`
 * **Reference:** [Summarize Paragraphs](https://docs.mirage-ai.com/references/api/v1/#summarize-paragraphs)
 
 * **Request:**
 
 ```go
-client.Task.SummarizeParagraphs(mirage.SummarizeParagraphsRequest {
+client.Task.SummarizeParagraphs(mirage.RequestContext{}, mirage.SummarizeParagraphsRequest {
   Paragraphs: []mirage.SummarizeParagraphsRequestParagraph {
     mirage.SummarizeParagraphsRequestParagraph {
       Text: "GPT-4 is getting worse over time, not better.",
@@ -218,13 +218,13 @@ client.Task.SummarizeParagraphs(mirage.SummarizeParagraphsRequest {
 
 #### ➡️ Summarize Conversation
 
-* **Method:** `client.Task.SummarizeConversation(data)`
+* **Method:** `client.Task.SummarizeConversation(ctx, data)`
 * **Reference:** [Summarize Conversation](https://docs.mirage-ai.com/references/api/v1/#summarize-conversation)
 
 * **Request:**
 
 ```go
-client.Task.SummarizeConversation(mirage.SummarizeConversationRequest {
+client.Task.SummarizeConversation(mirage.RequestContext{}, mirage.SummarizeConversationRequest {
   Transcript: []mirage.SummarizeConversationRequestTranscript {
     mirage.SummarizeConversationRequestTranscript {
       Name: "Valerian",
@@ -253,13 +253,13 @@ client.Task.SummarizeConversation(mirage.SummarizeConversationRequest {
 
 #### ➡️ Categorize Conversations
 
-* **Method:** `client.Task.CategorizeConversations(data)`
+* **Method:** `client.Task.CategorizeConversations(ctx, data)`
 * **Reference:** [Categorize Conversations](https://docs.mirage-ai.com/references/api/v1/#categorize-conversations)
 
 * **Request:**
 
 ```go
-client.Task.CategorizeConversations(mirage.CategorizeConversationsRequest {
+client.Task.CategorizeConversations(mirage.RequestContext{}, mirage.CategorizeConversationsRequest {
   Conversations: []mirage.CategorizeConversationsRequestConversation {
     mirage.CategorizeConversationsRequestConversation {
       Transcript: []mirage.CategorizeConversationsRequestConversationTranscript {
@@ -294,7 +294,7 @@ client.Task.CategorizeConversations(mirage.CategorizeConversationsRequest {
 
 #### ➡️ Rank Question
 
-* **Method:** `client.Task.RankQuestion(data)`
+* **Method:** `client.Task.RankQuestion(ctx, data)`
 * **Reference:** [Rank Question](https://docs.mirage-ai.com/references/api/v1/#rank-question)
 
 * **Request:**
@@ -302,7 +302,7 @@ client.Task.CategorizeConversations(mirage.CategorizeConversationsRequest {
 ```go
 rankSource := "helpdesk"
 
-client.Task.RankQuestion(mirage.RankQuestionRequest {
+client.Task.RankQuestion(mirage.RequestContext{}, mirage.RankQuestionRequest {
   Question: "Hi! I am having issues setting up DNS records for my Crisp helpdesk. Can you help?",
 
   Context: mirage.RankQuestionRequestContext {
@@ -346,7 +346,7 @@ client.Task.RankQuestion(mirage.RankQuestionRequest {
 
 #### ➡️ Translate Text
 
-* **Method:** `client.Task.TranslateText(data)`
+* **Method:** `client.Task.TranslateText(ctx, data)`
 * **Reference:** [Translate Text](https://docs.mirage-ai.com/references/api/v1/#translate-text)
 
 * **Request:**
@@ -354,7 +354,7 @@ client.Task.RankQuestion(mirage.RankQuestionRequest {
 ```go
 translateType := "html"
 
-client.Task.TranslateText(mirage.TranslateTextRequest {
+client.Task.TranslateText(mirage.RequestContext{}, mirage.TranslateTextRequest {
   Locale: mirage.TranslateTextRequestLocale {
     From: "fr",
     To: "en",
@@ -379,13 +379,13 @@ client.Task.TranslateText(mirage.TranslateTextRequest {
 
 #### ➡️ Fraud Spamicity
 
-* **Method:** `client.Task.FraudSpamicity(data)`
+* **Method:** `client.Task.FraudSpamicity(ctx, data)`
 * **Reference:** [Fraud Spamicity](https://docs.mirage-ai.com/references/api/v1/#fraud-spamicity)
 
 * **Request:**
 
 ```go
-client.Task.FraudSpamicity(mirage.FraudSpamicityRequest {
+client.Task.FraudSpamicity(mirage.RequestContext{}, mirage.FraudSpamicityRequest {
   Name: "Crisp",
   Domain: "crisp.chat",
   EmailDomain: "mail.crisp.chat",
@@ -407,13 +407,13 @@ client.Task.FraudSpamicity(mirage.FraudSpamicityRequest {
 
 #### ➡️ Spam Classify
 
-* **Method:** `client.Task.SpamClassify(data)`
+* **Method:** `client.Task.SpamClassify(ctx, data)`
 * **Reference:** [Spam Classify](https://docs.mirage-ai.com/references/api/v1/#spam-classify)
 
 * **Request:**
 
 ```go
-client.Task.SpamClassify(mirage.SpamClassifyRequest {
+client.Task.SpamClassify(mirage.RequestContext{}, mirage.SpamClassifyRequest {
   Sender: mirage.SpamClassifyRequestSender {
     Name: "John Doe",
     Email: "john@example.com",
@@ -454,7 +454,7 @@ client.Task.SpamClassify(mirage.SpamClassifyRequest {
 
 #### ➡️ Context Ingest
 
-* **Method:** `client.data.context_ingest(data)`
+* **Method:** `client.Task.IngestContextData(ctx, data)`
 * **Reference:** [Ingest Context Data](https://docs.mirage-ai.com/references/api/v1/#ingest-context-data)
 
 * **Request:**
@@ -471,7 +471,7 @@ ingestMetadata := map[string]string{
   "another_key": "another_value",
 }
 
-data, err := client.Task.IngestContextData(mirage.IngestContextDataRequest {
+data, err := client.Task.IngestContextData(mirage.RequestContext{}, mirage.IngestContextDataRequest {
   Items: []mirage.IngestContextDataRequestItem {
     mirage.IngestContextDataRequestItem {
       Operation: "index",

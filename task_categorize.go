@@ -41,8 +41,8 @@ func (instance CategorizeConversationsResponse) String() string {
 
 
 // CategorizeConversations categorize multiple conversations, from a list of messages for each individual conversation.
-func (service *TaskService) CategorizeConversations(data CategorizeConversationsRequest) (*CategorizeConversationsResponse, error) {
-  req, _ := service.client.NewRequest("POST", "task/categorize/conversations", data)
+func (service *TaskService) CategorizeConversations(ctx RequestContext, data CategorizeConversationsRequest) (*CategorizeConversationsResponse, error) {
+  req, _ := service.client.NewRequest("POST", "task/categorize/conversations", data, ctx)
 
   result := new(CategorizeConversationsResponseData)
   _, err := service.client.Do(req, result)

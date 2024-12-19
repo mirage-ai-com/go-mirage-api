@@ -22,7 +22,7 @@ func main() {
   translateType := "html"
 
   // Translate provided text
-  data, err := client.Task.TranslateText(mirage.TranslateTextRequest {
+  data, err := client.Task.TranslateText(mirage.RequestContext{}, mirage.TranslateTextRequest {
     Locale: mirage.TranslateTextRequestLocale {
       From: "fr",
       To: "en",

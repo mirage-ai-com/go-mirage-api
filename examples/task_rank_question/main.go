@@ -22,7 +22,7 @@ func main() {
   rankSource := "helpdesk"
 
   // Rank provided question results
-  data, err := client.Task.RankQuestion(mirage.RankQuestionRequest {
+  data, err := client.Task.RankQuestion(mirage.RequestContext{}, mirage.RankQuestionRequest {
     Question: "Hi! I am having issues setting up DNS records for my Crisp helpdesk. Can you help?",
 
     Context: mirage.RankQuestionRequestContext {

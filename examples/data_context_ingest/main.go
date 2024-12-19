@@ -31,7 +31,7 @@ func main() {
   }
 
   // Ingest provided context data
-  data, err := client.Task.IngestContextData(mirage.IngestContextDataRequest {
+  data, err := client.Task.IngestContextData(mirage.RequestContext{}, mirage.IngestContextDataRequest {
     Items: []mirage.IngestContextDataRequestItem {
       mirage.IngestContextDataRequestItem {
         Operation: "index",

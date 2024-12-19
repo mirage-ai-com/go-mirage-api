@@ -73,8 +73,8 @@ func (instance SummarizeConversationResponse) String() string {
 
 
 // SummarizeParagraphs summarize given paragraphs.
-func (service *TaskService) SummarizeParagraphs(data SummarizeParagraphsRequest) (*SummarizeParagraphsResponse, error) {
-  req, _ := service.client.NewRequest("POST", "task/summarize/paragraphs", data)
+func (service *TaskService) SummarizeParagraphs(ctx RequestContext, data SummarizeParagraphsRequest) (*SummarizeParagraphsResponse, error) {
+  req, _ := service.client.NewRequest("POST", "task/summarize/paragraphs", data, ctx)
 
   result := new(SummarizeParagraphsResponseData)
   _, err := service.client.Do(req, result)
@@ -87,8 +87,8 @@ func (service *TaskService) SummarizeParagraphs(data SummarizeParagraphsRequest)
 
 
 // SummarizeConversation summarize a given conversation, from a list of messages.
-func (service *TaskService) SummarizeConversation(data SummarizeConversationRequest) (*SummarizeConversationResponse, error) {
-  req, _ := service.client.NewRequest("POST", "task/summarize/conversation", data)
+func (service *TaskService) SummarizeConversation(ctx RequestContext, data SummarizeConversationRequest) (*SummarizeConversationResponse, error) {
+  req, _ := service.client.NewRequest("POST", "task/summarize/conversation", data, ctx)
 
   result := new(SummarizeConversationResponseData)
   _, err := service.client.Do(req, result)

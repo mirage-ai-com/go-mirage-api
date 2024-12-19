@@ -19,7 +19,7 @@ func main() {
   client := mirage.New(CONFIG_USER_ID, CONFIG_SECRET_KEY)
 
   // Categorize provided conversations
-  data, err := client.Task.CategorizeConversations(mirage.CategorizeConversationsRequest {
+  data, err := client.Task.CategorizeConversations(mirage.RequestContext{}, mirage.CategorizeConversationsRequest {
     Conversations: []mirage.CategorizeConversationsRequestConversation {
       mirage.CategorizeConversationsRequestConversation {
         Transcript: []mirage.CategorizeConversationsRequestConversationTranscript {

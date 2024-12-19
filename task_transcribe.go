@@ -50,8 +50,8 @@ func (instance TranscribeSpeechResponse) String() string {
 
 
 // TranscribeSpeech transcribe speech from an audio file to text.
-func (service *TaskService) TranscribeSpeech(data TranscribeSpeechRequest) (*TranscribeSpeechResponse, error) {
-  req, _ := service.client.NewRequest("POST", "task/transcribe/speech", data)
+func (service *TaskService) TranscribeSpeech(ctx RequestContext, data TranscribeSpeechRequest) (*TranscribeSpeechResponse, error) {
+  req, _ := service.client.NewRequest("POST", "task/transcribe/speech", data, ctx)
 
   result := new(TranscribeSpeechResponseData)
   _, err := service.client.Do(req, result)

@@ -42,8 +42,8 @@ func (instance IngestContextDataResponse) String() string {
 
 
 // IngestContextData ingest context data into account.
-func (service *TaskService) IngestContextData(data IngestContextDataRequest) (*IngestContextDataResponse, error) {
-  req, _ := service.client.NewRequest("POST", "data/context/ingest", data)
+func (service *TaskService) IngestContextData(ctx RequestContext, data IngestContextDataRequest) (*IngestContextDataResponse, error) {
+  req, _ := service.client.NewRequest("POST", "data/context/ingest", data, ctx)
 
   result := new(IngestContextDataResponseData)
   _, err := service.client.Do(req, result)

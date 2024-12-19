@@ -19,7 +19,7 @@ func main() {
   client := mirage.New(CONFIG_USER_ID, CONFIG_SECRET_KEY)
 
   // Summarize provided conversation
-  data, err := client.Task.SummarizeConversation(mirage.SummarizeConversationRequest {
+  data, err := client.Task.SummarizeConversation(mirage.RequestContext{}, mirage.SummarizeConversationRequest {
     Transcript: []mirage.SummarizeConversationRequestTranscript {
       mirage.SummarizeConversationRequestTranscript {
         Name: "Valerian",

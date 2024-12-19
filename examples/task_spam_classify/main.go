@@ -19,7 +19,7 @@ func main() {
   client := mirage.New(CONFIG_USER_ID, CONFIG_SECRET_KEY)
 
   // Spam classification on email messages
-  data, err := client.Task.SpamClassify(mirage.SpamClassifyRequest {
+  data, err := client.Task.SpamClassify(mirage.RequestContext{}, mirage.SpamClassifyRequest {
     Sender: mirage.SpamClassifyRequestSender {
       Name: "John Doe",
       Email: "john@example.com",

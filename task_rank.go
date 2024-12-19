@@ -69,8 +69,8 @@ func (instance RankQuestionResponse) String() string {
 
 
 // RankQuestion ranks results based on a given question.
-func (service *TaskService) RankQuestion(data RankQuestionRequest) (*RankQuestionResponse, error) {
-  req, _ := service.client.NewRequest("POST", "task/rank/question", data)
+func (service *TaskService) RankQuestion(ctx RequestContext, data RankQuestionRequest) (*RankQuestionResponse, error) {
+  req, _ := service.client.NewRequest("POST", "task/rank/question", data, ctx)
 
   result := new(RankQuestionResponseData)
   _, err := service.client.Do(req, result)

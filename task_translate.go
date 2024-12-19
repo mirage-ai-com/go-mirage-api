@@ -38,8 +38,8 @@ func (instance TranslateTextResponse) String() string {
 
 
 // TranslateText translate a provided text between two languages.
-func (service *TaskService) TranslateText(data TranslateTextRequest) (*TranslateTextResponse, error) {
-  req, _ := service.client.NewRequest("POST", "task/translate/text", data)
+func (service *TaskService) TranslateText(ctx RequestContext, data TranslateTextRequest) (*TranslateTextResponse, error) {
+  req, _ := service.client.NewRequest("POST", "task/translate/text", data, ctx)
 
   result := new(TranslateTextResponseData)
   _, err := service.client.Do(req, result)

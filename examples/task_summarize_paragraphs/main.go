@@ -19,7 +19,7 @@ func main() {
   client := mirage.New(CONFIG_USER_ID, CONFIG_SECRET_KEY)
 
   // Summarize provided paragraphs
-  data, err := client.Task.SummarizeParagraphs(mirage.SummarizeParagraphsRequest {
+  data, err := client.Task.SummarizeParagraphs(mirage.RequestContext{}, mirage.SummarizeParagraphsRequest {
     Paragraphs: []mirage.SummarizeParagraphsRequestParagraph {
       mirage.SummarizeParagraphsRequestParagraph {
         Text: "GPT-4 is getting worse over time, not better.",

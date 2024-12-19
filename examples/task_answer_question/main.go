@@ -22,7 +22,7 @@ func main() {
   answerStart := "Sure,"
 
   // Answer provided question
-  data, err := client.Task.AnswerQuestion(mirage.AnswerQuestionRequest {
+  data, err := client.Task.AnswerQuestion(mirage.RequestContext{}, mirage.AnswerQuestionRequest {
     Question: "Should I pay more for that?",
 
     Answer: &mirage.AnswerQuestionRequestAnswer {

@@ -122,8 +122,8 @@ func (instance AnswerQuestionResponse) String() string {
 
 
 // AnswerPrompt answer a given prompt.
-func (service *TaskService) AnswerPrompt(data AnswerPromptRequest) (*AnswerPromptResponse, error) {
-  req, _ := service.client.NewRequest("POST", "task/answer/prompt", data)
+func (service *TaskService) AnswerPrompt(ctx RequestContext, data AnswerPromptRequest) (*AnswerPromptResponse, error) {
+  req, _ := service.client.NewRequest("POST", "task/answer/prompt", data, ctx)
 
   result := new(AnswerPromptResponseData)
   _, err := service.client.Do(req, result)
@@ -136,8 +136,8 @@ func (service *TaskService) AnswerPrompt(data AnswerPromptRequest) (*AnswerPromp
 
 
 // AnswerQuestion answer a given question.
-func (service *TaskService) AnswerQuestion(data AnswerQuestionRequest) (*AnswerQuestionResponse, error) {
-  req, _ := service.client.NewRequest("POST", "task/answer/question", data)
+func (service *TaskService) AnswerQuestion(ctx RequestContext, data AnswerQuestionRequest) (*AnswerQuestionResponse, error) {
+  req, _ := service.client.NewRequest("POST", "task/answer/question", data, ctx)
 
   result := new(AnswerQuestionResponseData)
   _, err := service.client.Do(req, result)

@@ -19,7 +19,7 @@ func main() {
   client := mirage.New(CONFIG_USER_ID, CONFIG_SECRET_KEY)
 
   // Fraud check classification on scammy websites
-  data, err := client.Task.FraudSpamicity(mirage.FraudSpamicityRequest {
+  data, err := client.Task.FraudSpamicity(mirage.RequestContext{}, mirage.FraudSpamicityRequest {
     Name: "Crisp",
     Domain: "crisp.chat",
     EmailDomain: "mail.crisp.chat",

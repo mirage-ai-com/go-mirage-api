@@ -19,7 +19,7 @@ func main() {
   client := mirage.New(CONFIG_USER_ID, CONFIG_SECRET_KEY)
 
   // Transcribe provided audio file
-  data, err := client.Task.TranscribeSpeech(mirage.TranscribeSpeechRequest {
+  data, err := client.Task.TranscribeSpeech(mirage.RequestContext{}, mirage.TranscribeSpeechRequest {
 	  Locale: mirage.TranscribeSpeechRequestLocale {
 	    To: "en",
 	  },

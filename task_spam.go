@@ -55,8 +55,8 @@ func (instance SpamClassifyResponse) String() string {
 
 
 // SpamClassify spam check classification on spammy emails using a sender name, sender email and transcript.
-func (service *TaskService) SpamClassify(data SpamClassifyRequest) (*SpamClassifyResponse, error) {
-  req, _ := service.client.NewRequest("POST", "task/spam/classify", data)
+func (service *TaskService) SpamClassify(ctx RequestContext, data SpamClassifyRequest) (*SpamClassifyResponse, error) {
+  req, _ := service.client.NewRequest("POST", "task/spam/classify", data, ctx)
 
   result := new(SpamClassifyResponseData)
   _, err := service.client.Do(req, result)

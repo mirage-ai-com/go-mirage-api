@@ -63,6 +63,11 @@ type service struct {
   client *Client
 }
 
+// RequestContext maps custom context for a request
+type RequestContext struct {
+  Trace  string  `json:"string"`
+}
+
 // Response maps an API HTTP response
 type Response struct {
   *http.Response
@@ -125,7 +130,7 @@ func New(userID string, secretKey string) *Client {
 
 
 // NewRequest creates an API request
-func (client *Client) NewRequest(method, urlStr string, body interface{}) (*http.Request, error) {
+func (client *Client) NewRequest(method, urlStr string, body interface{}, ctx RequestContext) (*http.Request, error) {
   rel, err := url.Parse(urlStr)
   if err != nil {
     return nil, err
@@ -154,6 +159,13 @@ func (client *Client) NewRequest(method, urlStr string, body interface{}) (*http
 
   if client.UserAgent != "" {
     req.Header.Add("User-Agent", client.UserAgent)
+  }
+
+  if ctx.Trace != "" {
+    // Stamp request with provided trace identifier (this is optional, but \
+    //   can be used to track request flows across Mirage backend systems, for \
+    //   debugging purposes)
+    req.Header.Add("X-Request-ID", ctx.Trace)
   }
 
   return req, nil
