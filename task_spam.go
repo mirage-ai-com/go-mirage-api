@@ -14,8 +14,8 @@ type SpamClassifyRequest struct {
 
 // SpamClassifyRequestSender mapping
 type SpamClassifyRequestSender struct {
-  Name   string  `json:"name"`
-  Email  string  `json:"email"`
+  Name   *string  `json:"name"`
+  Email  *string  `json:"email"`
 }
 
 // SpamClassifyRequestTranscript mapping
