@@ -49,10 +49,10 @@ type SpamGenericResponse struct {
 
 // SpamGenericResponseScores mapping
 type SpamGenericResponseScores struct {
-  Gibberish  float32  `json:"gibberish"`
-  Marketing  float32  `json:"marketing"`
-  Regular    float32  `json:"regular"`
-  Spam       float32  `json:"spam"`
+  Gibberish  *float32  `json:"gibberish,omitempty"`
+  Marketing  *float32  `json:"marketing,omitempty"`
+  Regular    *float32  `json:"regular,omitempty"`
+  Spam       float32   `json:"spam"`
 }
 
 
