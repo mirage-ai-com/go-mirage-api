@@ -405,22 +405,22 @@ client.Task.FraudSpamicity(mirage.RequestContext{}, mirage.FraudSpamicityRequest
 }
 ```
 
-#### ➡️ Spam Classify
+#### ➡️ Spam Conversation
 
-* **Method:** `client.Task.SpamClassify(ctx, data)`
-* **Reference:** [Spam Classify](https://docs.mirage-ai.com/references/api/v1/#spam-classify)
+* **Method:** `client.Task.SpamConversation(ctx, data)`
+* **Reference:** [Spam Conversation](https://docs.mirage-ai.com/references/api/v1/#spam-conversation)
 
 * **Request:**
 
 ```go
-client.Task.SpamClassify(mirage.RequestContext{}, mirage.SpamClassifyRequest {
-  Sender: mirage.SpamClassifyRequestSender {
+client.Task.SpamConversation(mirage.RequestContext{}, mirage.SpamConversationRequest {
+  Sender: mirage.SpamConversationRequestSender {
     Name: "John Doe",
     Email: "john@example.com",
   },
 
-  Transcript: []mirage.SpamClassifyRequestTranscript {
-    mirage.SpamClassifyRequestTranscript {
+  Transcript: []mirage.SpamConversationRequestTranscript {
+    mirage.SpamConversationRequestTranscript {
       From: "customer",
       Origin: "chat",
       Text: "Hello, I would like to discuss your services",
@@ -445,6 +445,43 @@ client.Task.SpamClassify(mirage.RequestContext{}, mirage.SpamClassifyRequest {
       "marketing": 0.45,
       "regular": 0.0,
       "spam": 0.93
+    }
+  }
+}
+```
+
+#### ➡️ Spam Document
+
+* **Method:** `client.Task.SpamDocument(ctx, data)`
+* **Reference:** [Spam Document](https://docs.mirage-ai.com/references/api/v1/#spam-document)
+
+* **Request:**
+
+```go
+client.Task.SpamDocument(mirage.RequestContext{}, mirage.SpamDocumentRequest {
+  Name: "Spammy Domain",
+  Domain: "spammy-domain.crisp.help",
+  Title: "Spammy title",
+  Content: "Spammy content",
+})
+```
+
+* **Response:**
+
+```json
+{
+  "reason": "processed",
+
+  "data": {
+    "class": "spam",
+    "confidence": 0.82,
+    "logprob": -0.10,
+
+    "scores": {
+      "gibberish": 0.0,
+      "marketing": 0.0,
+      "regular": 0.0,
+      "spam": 0.82
     }
   }
 }

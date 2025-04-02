@@ -19,14 +19,14 @@ func main() {
   client := mirage.New(CONFIG_USER_ID, CONFIG_SECRET_KEY)
 
   // Spam classification on email messages
-  data, err := client.Task.SpamClassify(mirage.RequestContext{}, mirage.SpamClassifyRequest {
-    Sender: mirage.SpamClassifyRequestSender {
+  data, err := client.Task.SpamConversation(mirage.RequestContext{}, mirage.SpamConversationRequest {
+    Sender: mirage.SpamConversationRequestSender {
       Name: "John Doe",
       Email: "john@example.com",
     },
 
-    Transcript: []mirage.SpamClassifyRequestTranscript {
-      mirage.SpamClassifyRequestTranscript {
+    Transcript: []mirage.SpamConversationRequestTranscript {
+      mirage.SpamConversationRequestTranscript {
         From: "customer",
         Origin: "chat",
         Text: "Hello, I would like to discuss your services",
@@ -37,6 +37,6 @@ func main() {
   if err != nil {
     fmt.Printf("Error: %s", err)
   } else {
-    fmt.Printf("Spam classify results (raw): %s\n", data)
+    fmt.Printf("Spam conversation results (raw): %s\n", data)
   }
 }

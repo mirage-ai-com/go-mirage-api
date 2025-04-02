@@ -6,41 +6,49 @@
 package mirage
 
 
-// SpamClassifyRequest mapping
-type SpamClassifyRequest struct {
-  Sender      SpamClassifyRequestSender        `json:"sender"`
-  Transcript  []SpamClassifyRequestTranscript  `json:"transcript"`
+// SpamConversationRequest mapping
+type SpamConversationRequest struct {
+  Sender      SpamConversationRequestSender        `json:"sender"`
+  Transcript  []SpamConversationRequestTranscript  `json:"transcript"`
 }
 
-// SpamClassifyRequestSender mapping
-type SpamClassifyRequestSender struct {
+// SpamConversationRequestSender mapping
+type SpamConversationRequestSender struct {
   Name   *string  `json:"name"`
   Email  *string  `json:"email"`
 }
 
-// SpamClassifyRequestTranscript mapping
-type SpamClassifyRequestTranscript struct {
+// SpamConversationRequestTranscript mapping
+type SpamConversationRequestTranscript struct {
   From    string  `json:"from"`
   Origin  string  `json:"origin"`
   Text    string  `json:"text"`
 }
 
-
-// SpamClassifyResponseData mapping
-type SpamClassifyResponseData struct {
-  Data  *SpamClassifyResponse  `json:"data"`
+// SpamDocumentRequest mapping
+type SpamDocumentRequest struct {
+  Name     string  `json:"name"`
+  Domain   string  `json:"domain"`
+  Title    string  `json:"title"`
+  Content  string  `json:"content"`
 }
 
-// SpamClassifyResponse mapping
-type SpamClassifyResponse struct {
-  Class       string                      `json:"class"`
-  Confidence  float32                     `json:"confidence"`
-  LogProb     float32                     `json:"logprob"`
-  Scores      SpamClassifyResponseScores  `json:"scores"`
+
+// SpamGenericResponseData mapping
+type SpamGenericResponseData struct {
+  Data  *SpamGenericResponse  `json:"data"`
 }
 
-// SpamClassifyResponseScores mapping
-type SpamClassifyResponseScores struct {
+// SpamGenericResponse mapping
+type SpamGenericResponse struct {
+  Class       string                     `json:"class"`
+  Confidence  float32                    `json:"confidence"`
+  LogProb     float32                    `json:"logprob"`
+  Scores      SpamGenericResponseScores  `json:"scores"`
+}
+
+// SpamGenericResponseScores mapping
+type SpamGenericResponseScores struct {
   Gibberish  float32  `json:"gibberish"`
   Marketing  float32  `json:"marketing"`
   Regular    float32  `json:"regular"`
@@ -48,17 +56,31 @@ type SpamClassifyResponseScores struct {
 }
 
 
-// String returns the string representation of SpamClassifyResponse
-func (instance SpamClassifyResponse) String() string {
+// String returns the string representation of SpamGenericResponse
+func (instance SpamGenericResponse) String() string {
   return Stringify(instance)
 }
 
 
-// SpamClassify spam check classification on spammy emails using a sender name, sender email and transcript.
-func (service *TaskService) SpamClassify(ctx RequestContext, data SpamClassifyRequest) (*SpamClassifyResponse, error) {
-  req, _ := service.client.NewRequest("POST", "task/spam/classify", data, ctx)
+// SpamConversation spam check classification for conversations on spammy emails using a sender name, sender email and transcript.
+func (service *TaskService) SpamConversation(ctx RequestContext, data SpamConversationRequest) (*SpamGenericResponse, error) {
+  req, _ := service.client.NewRequest("POST", "task/spam/conversation", data, ctx)
 
-  result := new(SpamClassifyResponseData)
+  result := new(SpamGenericResponseData)
+  _, err := service.client.Do(req, result)
+  if err != nil {
+    return nil, err
+  }
+
+  return result.Data, err
+}
+
+
+// SpamDocument spam check classification for documents on spammy documents using a title, content, author name and author domain.
+func (service *TaskService) SpamDocument(ctx RequestContext, data SpamDocumentRequest) (*SpamGenericResponse, error) {
+  req, _ := service.client.NewRequest("POST", "task/spam/document", data, ctx)
+
+  result := new(SpamGenericResponseData)
   _, err := service.client.Do(req, result)
   if err != nil {
     return nil, err

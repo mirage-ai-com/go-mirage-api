@@ -40,43 +40,28 @@ type SummarizeConversationRequestTranscript struct {
 }
 
 
-// SummarizeParagraphsResponseData mapping
-type SummarizeParagraphsResponseData struct {
-  Data  *SummarizeParagraphsResponse  `json:"data"`
+// SummarizeGenericResponseData mapping
+type SummarizeGenericResponseData struct {
+  Data  *SummarizeGenericResponse  `json:"data"`
 }
 
-// SummarizeParagraphsResponse mapping
-type SummarizeParagraphsResponse struct {
-  Summary  string  `json:"summary"`
-}
-
-// SummarizeConversationResponseData mapping
-type SummarizeConversationResponseData struct {
-  Data  *SummarizeConversationResponse  `json:"data"`
-}
-
-// SummarizeConversationResponse mapping
-type SummarizeConversationResponse struct {
+// SummarizeGenericResponse mapping
+type SummarizeGenericResponse struct {
   Summary  string  `json:"summary"`
 }
 
 
-// String returns the string representation of SummarizeParagraphsResponse
-func (instance SummarizeParagraphsResponse) String() string {
-  return Stringify(instance)
-}
-
-// String returns the string representation of SummarizeConversationResponse
-func (instance SummarizeConversationResponse) String() string {
+// String returns the string representation of SummarizeGenericResponse
+func (instance SummarizeGenericResponse) String() string {
   return Stringify(instance)
 }
 
 
 // SummarizeParagraphs summarize given paragraphs.
-func (service *TaskService) SummarizeParagraphs(ctx RequestContext, data SummarizeParagraphsRequest) (*SummarizeParagraphsResponse, error) {
+func (service *TaskService) SummarizeParagraphs(ctx RequestContext, data SummarizeParagraphsRequest) (*SummarizeGenericResponse, error) {
   req, _ := service.client.NewRequest("POST", "task/summarize/paragraphs", data, ctx)
 
-  result := new(SummarizeParagraphsResponseData)
+  result := new(SummarizeGenericResponseData)
   _, err := service.client.Do(req, result)
   if err != nil {
     return nil, err
@@ -87,10 +72,10 @@ func (service *TaskService) SummarizeParagraphs(ctx RequestContext, data Summari
 
 
 // SummarizeConversation summarize a given conversation, from a list of messages.
-func (service *TaskService) SummarizeConversation(ctx RequestContext, data SummarizeConversationRequest) (*SummarizeConversationResponse, error) {
+func (service *TaskService) SummarizeConversation(ctx RequestContext, data SummarizeConversationRequest) (*SummarizeGenericResponse, error) {
   req, _ := service.client.NewRequest("POST", "task/summarize/conversation", data, ctx)
 
-  result := new(SummarizeConversationResponseData)
+  result := new(SummarizeGenericResponseData)
   _, err := service.client.Do(req, result)
   if err != nil {
     return nil, err
