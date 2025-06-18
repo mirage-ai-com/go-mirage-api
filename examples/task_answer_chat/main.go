@@ -44,6 +44,7 @@ func main() {
     Tools: []mirage.AnswerChatRequestTool{
       mirage.AnswerChatRequestTool {
         Type: "function",
+
         Function: mirage.AnswerChatRequestToolFunction {
           Name: "get_current_weather",
           Description: "Get the current weather for a city",

@@ -216,6 +216,7 @@ client.Task.AnswerChat(mirage.RequestContext{}, mirage.AnswerChatRequest {
   Tools: []mirage.AnswerChatRequestTool{
     mirage.AnswerChatRequestTool {
       Type: "function",
+
       Function: mirage.AnswerChatRequestToolFunction {
         Name: "get_current_weather",
         Description: "Get the current weather for a city",
@@ -239,6 +240,7 @@ client.Task.AnswerChat(mirage.RequestContext{}, mirage.AnswerChatRequest {
     {
       "function": {
         "name": "get_current_weather",
+
         "arguments": {
           "city": "Nantes"
         }
