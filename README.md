@@ -183,6 +183,71 @@ client.Task.AnswerQuestion(mirage.RequestContext{}, mirage.AnswerQuestionRequest
 }
 ```
 
+#### ➡️ Answer Chat
+
+* **Method:** `client.Task.AnswerChat(ctx, data)`
+* **Reference:** [Answer Chat](https://docs.mirage-ai.com/references/api/v1/#answer-chat)
+
+* **Request:**
+
+```go
+client.Task.AnswerChat(mirage.RequestContext{}, mirage.AnswerChatRequest {
+  Context: mirage.AnswerChatRequestContext {
+    Conversation: mirage.AnswerChatRequestContextConversation {
+      Messages: []mirage.AnswerChatRequestContextConversationMessage {
+        mirage.AnswerChatRequestContextConversationMessage {
+          From: "customer",
+          Text: "Hey there!",
+        },
+
+        mirage.AnswerChatRequestContextConversationMessage {
+          From: "agent",
+          Text: "Hi. How can I help?",
+        },
+
+        mirage.AnswerChatRequestContextConversationMessage {
+          From: "customer",
+          Text: "What is the weather in Nantes, France?",
+        },
+      },
+    },
+  },
+  
+  Tools: []mirage.AnswerChatRequestTool{
+    mirage.AnswerChatRequestTool {
+      Type: "function",
+      Function: mirage.AnswerChatRequestToolFunction {
+        Name: "get_current_weather",
+        Description: "Get the current weather for a city",
+
+        // Add parameters as JSON schema
+        Parameters: nil,
+      },
+    },
+  },
+})
+```
+
+* **Response:**
+
+```json
+{
+  "answer": "",
+  "model": "medium",
+
+  "tool_calls": [
+    {
+      "function": {
+        "name": "get_current_weather",
+        "arguments": {
+          "city": "Nantes"
+        }
+      }
+    }
+  ]
+}
+```
+
 #### ➡️ Summarize Paragraphs
 
 * **Method:** `client.Task.SummarizeParagraphs(ctx, data)`
