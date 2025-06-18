@@ -75,6 +75,43 @@ type AnswerQuestionRequestContextConversationMessage struct {
 	Text  string  `json:"text"`
 }
 
+// AnswerChatRequest mapping
+type AnswerChatRequest struct {
+  Schema   *interface{}              `json:"schema,omitempty"`
+  Model    *string                   `json:"model,omitempty"`
+  Context  AnswerChatRequestContext  `json:"context"`
+  Tools    []AnswerChatRequestTool   `json:"tools,omitempty"`
+}
+
+// AnswerChatRequestContext mapping
+type AnswerChatRequestContext struct {
+  Conversation  AnswerChatRequestContextConversation  `json:"conversation"`
+}
+
+// AnswerChatRequestContextConversation mapping
+type AnswerChatRequestContextConversation struct {
+	Messages  []AnswerChatRequestContextConversationMessage  `json:"messages"`
+}
+
+// AnswerChatRequestContextConversationMessage mapping
+type AnswerChatRequestContextConversationMessage struct {
+	From  string  `json:"from"`
+	Text  string  `json:"text"`
+}
+
+// AnswerChatRequestTool mapping
+type AnswerChatRequestTool struct {
+	Type      string  `json:"type"`
+	Function  AnswerChatRequestToolFunction  `json:"function"`
+}
+
+// AnswerChatRequestToolFunction mapping
+type AnswerChatRequestToolFunction struct {
+	Name        string        `json:"name"`
+	Description string        `json:"description"`
+	Parameters  *interface{}  `json:"parameters,omitempty"`
+}
+
 // AnswerPromptResponseData mapping
 type AnswerPromptResponseData struct {
   Data  *AnswerPromptResponse  `json:"data"`
@@ -109,6 +146,28 @@ type AnswerQuestionResponseSource struct {
   Metadata     *map[string]string  `json:"metadata,omitempty"`
 }
 
+// AnswerPromptResponseData mapping
+type AnswerChatResponseData struct {
+  Data  *AnswerChatResponse  `json:"data"`
+}
+
+// AnswerChatResponse mapping
+type AnswerChatResponse struct {
+  Answer     string                         `json:"answer"`
+  Model      string                         `json:"model"`
+  ToolCalls  *[]AnswerChatResponseToolCall  `json:"tool_calls,omitempty"`
+}
+
+// AnswerChatResponseToolCall mapping
+type AnswerChatResponseToolCall struct {
+  Function  *AnswerChatResponseToolCallFunction  `json:"function,omitempty"`
+}
+
+// AnswerChatResponseToolCallFunction mapping
+type AnswerChatResponseToolCallFunction struct {
+  Name       string        `json:"name"`
+  Arguments  *interface{}  `json:"arguments,omitempty"`
+}
 
 // String returns the string representation of AnswerPromptResponse
 func (instance AnswerPromptResponse) String() string {
@@ -120,6 +179,10 @@ func (instance AnswerQuestionResponse) String() string {
   return Stringify(instance)
 }
 
+// String returns the string representation of AnswerChatResponse
+func (instance AnswerChatResponse) String() string {
+  return Stringify(instance)
+}
 
 // AnswerPrompt answer a given prompt.
 func (service *TaskService) AnswerPrompt(ctx RequestContext, data AnswerPromptRequest) (*AnswerPromptResponse, error) {
@@ -140,6 +203,19 @@ func (service *TaskService) AnswerQuestion(ctx RequestContext, data AnswerQuesti
   req, _ := service.client.NewRequest("POST", "task/answer/question", data, ctx)
 
   result := new(AnswerQuestionResponseData)
+  _, err := service.client.Do(req, result)
+  if err != nil {
+    return nil, err
+  }
+
+  return result.Data, err
+}
+
+// AnswerChat answer a given chat.
+func (service *TaskService) AnswerChat(ctx RequestContext, data AnswerChatRequest) (*AnswerChatResponse, error) {
+  req, _ := service.client.NewRequest("POST", "task/answer/chat", data, ctx)
+
+  result := new(AnswerChatResponseData)
   _, err := service.client.Do(req, result)
   if err != nil {
     return nil, err
