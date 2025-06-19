@@ -8,60 +8,62 @@ package mirage
 
 // AnswerPromptRequest mapping
 type AnswerPromptRequest struct {
-  Prompt  string                      `json:"prompt"`
-  Answer  *AnswerPromptRequestAnswer  `json:"answer,omitempty"`
-  Schema  *interface{}                `json:"schema,omitempty"`
-  Model   *string                     `json:"model,omitempty"`
+	Prompt  string                      `json:"prompt"`
+	Answer  *AnswerPromptRequestAnswer  `json:"answer,omitempty"`
+	Schema  *interface{}                `json:"schema,omitempty"`
+	Model   *string                     `json:"model,omitempty"`
 }
 
 // AnswerPromptRequestAnswer mapping
 type AnswerPromptRequestAnswer struct {
-  MaxTokens    *uint16   `json:"max_tokens,omitempty"`
-  Temperature  *float32  `json:"temperature,omitempty"`
+	MaxTokens    *uint16   `json:"max_tokens,omitempty"`
+	Temperature  *float32  `json:"temperature,omitempty"`
+	Think        *bool     `json:"think,omitempty"`
 }
 
 // AnswerQuestionRequest mapping
 type AnswerQuestionRequest struct {
-  Question  string                        `json:"question"`
-  Answer    *AnswerQuestionRequestAnswer  `json:"answer,omitempty"`
-  Locale    *AnswerQuestionRequestLocale  `json:"locale,omitempty"`
-  Context   AnswerQuestionRequestContext  `json:"context"`
-  Model     *string                       `json:"model,omitempty"`
+	Question  string                        `json:"question"`
+	Answer    *AnswerQuestionRequestAnswer  `json:"answer,omitempty"`
+	Locale    *AnswerQuestionRequestLocale  `json:"locale,omitempty"`
+	Context   AnswerQuestionRequestContext  `json:"context"`
+	Model     *string                       `json:"model,omitempty"`
 }
 
 // AnswerQuestionRequestAnswer mapping
 type AnswerQuestionRequestAnswer struct {
-  Start        *string   `json:"start,omitempty"`
-  System       *string   `json:"system,omitempty"`
-  Quality      *uint8    `json:"quality,omitempty"`
-  MaxTokens    *uint16   `json:"max_tokens,omitempty"`
-  Temperature  *float32  `json:"temperature,omitempty"`
+	Start        *string   `json:"start,omitempty"`
+	System       *string   `json:"system,omitempty"`
+	Quality      *uint8    `json:"quality,omitempty"`
+	MaxTokens    *uint16   `json:"max_tokens,omitempty"`
+	Temperature  *float32  `json:"temperature,omitempty"`
+	Think        *bool     `json:"think,omitempty"`
 }
 
 // AnswerQuestionRequestLocale mapping
 type AnswerQuestionRequestLocale struct {
-  From  string  `json:"from"`
+	From  string  `json:"from"`
 }
 
 // AnswerQuestionRequestContext mapping
 type AnswerQuestionRequestContext struct {
-  Source        *string                                   `json:"source,omitempty"`
-  PrimaryID     string                                    `json:"primary_id"`
-  Filters       *AnswerQuestionRequestContextFilters      `json:"filters,omitempty"`
-  Conversation  AnswerQuestionRequestContextConversation  `json:"conversation"`
+	Source        *string                                   `json:"source,omitempty"`
+	PrimaryID     string                                    `json:"primary_id"`
+	Filters       *AnswerQuestionRequestContextFilters      `json:"filters,omitempty"`
+	Conversation  AnswerQuestionRequestContextConversation  `json:"conversation"`
 }
 
 // AnswerQuestionRequestContextFilters mapping
 type AnswerQuestionRequestContextFilters struct {
-  SecondaryID  *AnswerQuestionRequestContextFiltersFilter  `json:"secondary_id,omitempty"`
-  TertiaryID   *AnswerQuestionRequestContextFiltersFilter  `json:"tertiary_id,omitempty"`
-  Source       *AnswerQuestionRequestContextFiltersFilter  `json:"source,omitempty"`
+	SecondaryID  *AnswerQuestionRequestContextFiltersFilter  `json:"secondary_id,omitempty"`
+	TertiaryID   *AnswerQuestionRequestContextFiltersFilter  `json:"tertiary_id,omitempty"`
+	Source       *AnswerQuestionRequestContextFiltersFilter  `json:"source,omitempty"`
 }
 
 // AnswerQuestionRequestContextFiltersFilter mapping
 type AnswerQuestionRequestContextFiltersFilter struct {
-  Include  *[]string  `json:"include,omitempty"`
-  Exclude  *[]string  `json:"exclude,omitempty"`
+	Include  *[]string  `json:"include,omitempty"`
+	Exclude  *[]string  `json:"exclude,omitempty"`
 }
 
 // AnswerQuestionRequestContextConversation mapping
@@ -77,15 +79,15 @@ type AnswerQuestionRequestContextConversationMessage struct {
 
 // AnswerChatRequest mapping
 type AnswerChatRequest struct {
-  Schema   *interface{}              `json:"schema,omitempty"`
-  Model    *string                   `json:"model,omitempty"`
-  Context  AnswerChatRequestContext  `json:"context"`
-  Tools    []AnswerChatRequestTool   `json:"tools,omitempty"`
+	Schema   *interface{}              `json:"schema,omitempty"`
+	Model    *string                   `json:"model,omitempty"`
+	Context  AnswerChatRequestContext  `json:"context"`
+	Tools    []AnswerChatRequestTool   `json:"tools,omitempty"`
 }
 
 // AnswerChatRequestContext mapping
 type AnswerChatRequestContext struct {
-  Conversation  AnswerChatRequestContextConversation  `json:"conversation"`
+	Conversation  AnswerChatRequestContextConversation  `json:"conversation"`
 }
 
 // AnswerChatRequestContextConversation mapping
@@ -95,8 +97,10 @@ type AnswerChatRequestContextConversation struct {
 
 // AnswerChatRequestContextConversationMessage mapping
 type AnswerChatRequestContextConversationMessage struct {
-	From  string  `json:"from"`
-	Text  string  `json:"text"`
+	From       string                         `json:"from"`
+	Text       string                         `json:"text"`
+	ToolCalls  *[]AnswerChatResponseToolCall  `json:"tool_calls,omitempty"`
+	ToolCallID *string                        `json:"tool_call_id,omitempty"`
 }
 
 // AnswerChatRequestTool mapping
@@ -114,112 +118,116 @@ type AnswerChatRequestToolFunction struct {
 
 // AnswerPromptResponseData mapping
 type AnswerPromptResponseData struct {
-  Data  *AnswerPromptResponse  `json:"data"`
+	Data  *AnswerPromptResponse  `json:"data"`
 }
 
 // AnswerPromptResponse mapping
 type AnswerPromptResponse struct {
-  Answer  string  `json:"answer"`
-  Model   string  `json:"model"`
+	Answer   string   `json:"answer"`
+	Model    string   `json:"model"`
+	Thinking *string  `json:"thinking"`
 }
 
 // AnswerQuestionResponseData mapping
 type AnswerQuestionResponseData struct {
-  Data  *AnswerQuestionResponse  `json:"data"`
+	Data  *AnswerQuestionResponse  `json:"data"`
 }
 
 // AnswerQuestionResponse mapping
 type AnswerQuestionResponse struct {
-  Answer   string                          `json:"answer"`
-  Model    string                          `json:"model"`
-  Sources  []AnswerQuestionResponseSource  `json:"sources"`
+	Answer   string                          `json:"answer"`
+	Model    string                          `json:"model"`
+	Thinking *string                         `json:"thinking"`
+	Sources  []AnswerQuestionResponseSource  `json:"sources"`
 }
 
 // AnswerQuestionResponseSource mapping
 type AnswerQuestionResponseSource struct {
-  Source       *string             `json:"source,omitempty"`
-  Score        *uint8              `json:"score,omitempty"`
-  PrimaryID    string              `json:"primary_id"`
-  SecondaryID  *string             `json:"secondary_id,omitempty"`
-  Excerpt      *string             `json:"excerpt,omitempty"`
-  Timestamp    *uint64             `json:"timestamp,omitempty"`
-  Metadata     *map[string]string  `json:"metadata,omitempty"`
+	Source       *string             `json:"source,omitempty"`
+	Score        *uint8              `json:"score,omitempty"`
+	PrimaryID    string              `json:"primary_id"`
+	SecondaryID  *string             `json:"secondary_id,omitempty"`
+	Excerpt      *string             `json:"excerpt,omitempty"`
+	Timestamp    *uint64             `json:"timestamp,omitempty"`
+	Metadata     *map[string]string  `json:"metadata,omitempty"`
 }
 
-// AnswerPromptResponseData mapping
+// AnswerChatResponseData mapping
 type AnswerChatResponseData struct {
-  Data  *AnswerChatResponse  `json:"data"`
+	Data  *AnswerChatResponse  `json:"data"`
 }
 
 // AnswerChatResponse mapping
 type AnswerChatResponse struct {
-  Answer     string                         `json:"answer"`
-  Model      string                         `json:"model"`
-  ToolCalls  *[]AnswerChatResponseToolCall  `json:"tool_calls,omitempty"`
+	Answer     string                         `json:"answer"`
+	Model      string                         `json:"model"`
+	Thinking   *string                        `json:"thinking"`
+	ToolCalls  *[]AnswerChatResponseToolCall  `json:"tool_calls,omitempty"`
 }
 
 // AnswerChatResponseToolCall mapping
 type AnswerChatResponseToolCall struct {
-  Function  *AnswerChatResponseToolCallFunction  `json:"function,omitempty"`
+	ID        *string                              `json:"id,omitempty"`
+	Function  *AnswerChatResponseToolCallFunction  `json:"function,omitempty"`
 }
 
 // AnswerChatResponseToolCallFunction mapping
 type AnswerChatResponseToolCallFunction struct {
-  Name       string        `json:"name"`
-  Arguments  *interface{}  `json:"arguments,omitempty"`
+	Name       string        `json:"name"`
+	Arguments  *interface{}  `json:"arguments,omitempty"`
 }
 
 // String returns the string representation of AnswerPromptResponse
 func (instance AnswerPromptResponse) String() string {
-  return Stringify(instance)
+	return Stringify(instance)
 }
 
 // String returns the string representation of AnswerQuestionResponse
 func (instance AnswerQuestionResponse) String() string {
-  return Stringify(instance)
+	return Stringify(instance)
 }
 
 // String returns the string representation of AnswerChatResponse
 func (instance AnswerChatResponse) String() string {
-  return Stringify(instance)
+	return Stringify(instance)
 }
 
 // AnswerPrompt answer a given prompt.
 func (service *TaskService) AnswerPrompt(ctx RequestContext, data AnswerPromptRequest) (*AnswerPromptResponse, error) {
-  req, _ := service.client.NewRequest("POST", "task/answer/prompt", data, ctx)
+	req, _ := service.client.NewRequest("POST", "task/answer/prompt", data, ctx)
 
-  result := new(AnswerPromptResponseData)
-  _, err := service.client.Do(req, result)
-  if err != nil {
-    return nil, err
-  }
+	result := new(AnswerPromptResponseData)
+	_, err := service.client.Do(req, result)
+	if err != nil {
+		return nil, err
+	}
 
-  return result.Data, err
+	return result.Data, err
 }
 
 
 // AnswerQuestion answer a given question.
 func (service *TaskService) AnswerQuestion(ctx RequestContext, data AnswerQuestionRequest) (*AnswerQuestionResponse, error) {
-  req, _ := service.client.NewRequest("POST", "task/answer/question", data, ctx)
+	req, _ := service.client.NewRequest("POST", "task/answer/question", data, ctx)
 
-  result := new(AnswerQuestionResponseData)
-  _, err := service.client.Do(req, result)
-  if err != nil {
-    return nil, err
-  }
+	result := new(AnswerQuestionResponseData)
+	_, err := service.client.Do(req, result)
+	if err != nil {
+		return nil, err
+	}
 
-  return result.Data, err
+	return result.Data, err
 }
 
 // AnswerChat answer a given chat.
 func (service *TaskService) AnswerChat(ctx RequestContext, data AnswerChatRequest) (*AnswerChatResponse, error) {
-  req, _ := service.client.NewRequest("POST", "task/answer/chat", data, ctx)
+	req, _ := service.client.NewRequest("POST", "task/answer/chat", data, ctx)
 
-  result := new(AnswerChatResponseData)
-  _, err := service.client.Do(req, result)
-  if err != nil {
-    return nil, err
-  }
+	result := new(AnswerChatResponseData)
+	_, err := service.client.Do(req, result)
+	if err != nil {
+		return nil, err
+	}
 
-  return result.Data, err
+	return result.Data, err
 }
