@@ -5,6 +5,5 @@
 
 package mirage
 
-
 // TaskService service
 type TaskService service

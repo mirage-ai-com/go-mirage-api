@@ -5,78 +5,74 @@
 
 package mirage
 
-
 // RankQuestionRequest mapping
 type RankQuestionRequest struct {
-  Question  string                      `json:"question"`
-  Context   RankQuestionRequestContext  `json:"context"`
+	Question string                     `json:"question"`
+	Context  RankQuestionRequestContext `json:"context"`
 }
 
 // RankQuestionRequestContext mapping
 type RankQuestionRequestContext struct {
-  Source     *string                             `json:"source,omitempty"`
-  PrimaryID  string                              `json:"primary_id"`
-  Filters    *RankQuestionRequestContextFilters  `json:"filters,omitempty"`
+	Source    *string                            `json:"source,omitempty"`
+	PrimaryID string                             `json:"primary_id"`
+	Filters   *RankQuestionRequestContextFilters `json:"filters,omitempty"`
 }
 
 // RankQuestionRequestContextFilters mapping
 type RankQuestionRequestContextFilters struct {
-  SecondaryID  *RankQuestionRequestContextFiltersFilter  `json:"secondary_id,omitempty"`
-  TertiaryID   *RankQuestionRequestContextFiltersFilter  `json:"tertiary_id,omitempty"`
-  Source       *RankQuestionRequestContextFiltersFilter  `json:"source,omitempty"`
+	SecondaryID *RankQuestionRequestContextFiltersFilter `json:"secondary_id,omitempty"`
+	TertiaryID  *RankQuestionRequestContextFiltersFilter `json:"tertiary_id,omitempty"`
+	Source      *RankQuestionRequestContextFiltersFilter `json:"source,omitempty"`
 }
 
 // RankQuestionRequestContextFiltersFilter mapping
 type RankQuestionRequestContextFiltersFilter struct {
-  Include  *[]string  `json:"include,omitempty"`
-  Exclude  *[]string  `json:"exclude,omitempty"`
+	Include *[]string `json:"include,omitempty"`
+	Exclude *[]string `json:"exclude,omitempty"`
 }
-
 
 // RankQuestionResponseData mapping
 type RankQuestionResponseData struct {
-  Data  *RankQuestionResponse  `json:"data"`
+	Data *RankQuestionResponse `json:"data"`
 }
 
 // RankQuestionResponse mapping
 type RankQuestionResponse struct {
-  Results  []RankQuestionResponseResults  `json:"results"`
+	Results []RankQuestionResponseResults `json:"results"`
 }
 
 // RankQuestionResponseResults mapping
 type RankQuestionResponseResults struct {
-  ID           string                             `json:"id"`
-  Score        uint8                              `json:"score"`
-  GroupedText  string                             `json:"grouped_text"`
-  Items        []RankQuestionResponseResultsItem  `json:"items"`
+	ID          string                            `json:"id"`
+	Score       uint8                             `json:"score"`
+	GroupedText string                            `json:"grouped_text"`
+	Items       []RankQuestionResponseResultsItem `json:"items"`
 }
 
 // RankQuestionResponseResultsItem mapping
 type RankQuestionResponseResultsItem struct {
-  Source       *string       `json:"source,omitempty"`
-  PrimaryID    *string       `json:"primary_id,omitempty"`
-  SecondaryID  *string       `json:"secondary_id,omitempty"`
-  Text         *string       `json:"text,omitempty"`
-  Timestamp    *uint64       `json:"timestamp,omitempty"`
-  Metadata     *interface{}  `json:"metadata,omitempty"`
+	Source      *string      `json:"source,omitempty"`
+	PrimaryID   *string      `json:"primary_id,omitempty"`
+	SecondaryID *string      `json:"secondary_id,omitempty"`
+	Text        *string      `json:"text,omitempty"`
+	Timestamp   *uint64      `json:"timestamp,omitempty"`
+	Metadata    *interface{} `json:"metadata,omitempty"`
 }
-
 
 // String returns the string representation of RankQuestionResponse
 func (instance RankQuestionResponse) String() string {
-  return Stringify(instance)
+	return Stringify(instance)
 }
-
 
 // RankQuestion ranks results based on a given question.
 func (service *TaskService) RankQuestion(ctx RequestContext, data RankQuestionRequest) (*RankQuestionResponse, error) {
-  req, _ := service.client.NewRequest("POST", "task/rank/question", data, ctx)
+	req, _ := service.client.NewRequest("POST", "task/rank/question", data, ctx)
 
-  result := new(RankQuestionResponseData)
-  _, err := service.client.Do(req, result)
-  if err != nil {
-    return nil, err
-  }
+	result := new(RankQuestionResponseData)
+	_, err := service.client.Do(req, result)
+	if err != nil {
+		return nil, err
+	}
 
-  return result.Data, err
+	return result.Data, err
 }

@@ -5,6 +5,5 @@
 
 package mirage
 
-
 // DataService service
 type DataService service
