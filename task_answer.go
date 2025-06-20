@@ -81,6 +81,7 @@ type AnswerChatRequest struct {
 	Schema  *interface{}             `json:"schema,omitempty"`
 	Model   *string                  `json:"model,omitempty"`
 	Context AnswerChatRequestContext `json:"context"`
+	Answer  AnswerChatRequestAnswer  `json:"answer,omitempty"`
 	Tools   []AnswerChatRequestTool  `json:"tools,omitempty"`
 }
 
@@ -106,6 +107,13 @@ type AnswerChatRequestContextConversationMessage struct {
 type AnswerChatRequestTool struct {
 	Type     string                        `json:"type"`
 	Function AnswerChatRequestToolFunction `json:"function"`
+}
+
+// AnswerChatRequestAnswer mapping
+type AnswerChatRequestAnswer struct {
+	MaxTokens   *uint16  `json:"max_tokens,omitempty"`
+	Temperature *float32 `json:"temperature,omitempty"`
+	Think       *bool    `json:"think,omitempty"`
 }
 
 // AnswerChatRequestToolFunction mapping
