@@ -379,7 +379,7 @@ client.Task.CategorizeQuestion(mirage.RequestContext{}, mirage.CategorizeQuestio
   "reason": "processed",
 
   "data": {
-    "category": "Opener"
+    "category": "opener"
   }
 }
 ```
