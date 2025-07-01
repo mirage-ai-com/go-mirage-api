@@ -21,6 +21,11 @@ type CategorizeConversationsRequestConversationTranscript struct {
 	Text string `json:"text"`
 }
 
+// CategorizeQuestionRequest mapping
+type CategorizeQuestionRequest struct {
+	Question string `json:"question"`
+}
+
 // CategorizeConversationsResponseData mapping
 type CategorizeConversationsResponseData struct {
 	Data *CategorizeConversationsResponse `json:"data"`
@@ -31,16 +36,6 @@ type CategorizeConversationsResponse struct {
 	Categories []string `json:"categories"`
 }
 
-// String returns the string representation of CategorizeConversationsResponse
-func (instance CategorizeConversationsResponse) String() string {
-	return Stringify(instance)
-}
-
-// CategorizeQuestionRequest mapping
-type CategorizeQuestionRequest struct {
-	Question string `json:"question"`
-}
-
 // CategorizeQuestionResponseData mapping
 type CategorizeQuestionResponseData struct {
 	Data *CategorizeQuestionResponse `json:"data"`
@@ -49,6 +44,11 @@ type CategorizeQuestionResponseData struct {
 // CategorizeQuestionResponse mapping
 type CategorizeQuestionResponse struct {
 	Category string `json:"category"`
+}
+
+// String returns the string representation of CategorizeConversationsResponse
+func (instance CategorizeConversationsResponse) String() string {
+	return Stringify(instance)
 }
 
 // String returns the string representation of CategorizeQuestionResponse
