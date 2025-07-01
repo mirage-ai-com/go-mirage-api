@@ -6,7 +6,7 @@ The Mirage API Golang wrapper. Access AI inference services.
 
 Copyright 2023 Crisp IM SAS. See LICENSE for copying information.
 
-* **📝 Implements**: [API Reference (V1)](https://docs.mirage-ai.com/references/api/v1/) at revision: 18/11/2024
+* **📝 Implements**: [API Reference (V1)](https://docs.mirage-ai.com/references/api/v1/) at revision: 01/07/2025
 * **😘 Maintainer**: [@valeriansaliou](https://github.com/valeriansaliou)
 
 ## Usage
@@ -355,6 +355,31 @@ client.Task.CategorizeConversations(mirage.RequestContext{}, mirage.CategorizeCo
     "categories": [
       "Chatbot Configuration Issue"
     ]
+  }
+}
+```
+
+#### ➡️ Categorize Question
+
+* **Method:** `client.Task.CategorizeQuestion(ctx, data)`
+* **Reference:** [Categorize Question](https://docs.mirage-ai.com/references/api/v1/#categorize-question)
+
+* **Request:**
+
+```go
+client.Task.CategorizeQuestion(mirage.RequestContext{}, mirage.CategorizeQuestionRequest {
+  Question: "Hello. I have a question",
+})
+```
+
+* **Response:**
+
+```json
+{
+  "reason": "processed",
+
+  "data": {
+    "category": "Opener"
   }
 }
 ```
