@@ -78,11 +78,12 @@ type AnswerQuestionRequestContextConversationMessage struct {
 
 // AnswerChatRequest mapping
 type AnswerChatRequest struct {
-	Schema  *interface{}             `json:"schema,omitempty"`
-	Model   *string                  `json:"model,omitempty"`
-	Context AnswerChatRequestContext `json:"context"`
-	Answer  AnswerChatRequestAnswer  `json:"answer,omitempty"`
-	Tools   []AnswerChatRequestTool  `json:"tools,omitempty"`
+	Schema      *interface{}                  `json:"schema,omitempty"`
+	Model       *string                       `json:"model,omitempty"`
+	Context     AnswerChatRequestContext      `json:"context"`
+	Answer      AnswerChatRequestAnswer       `json:"answer,omitempty"`
+	Tools       []AnswerChatRequestTool       `json:"tools,omitempty"`
+	ToolChoice  *AnswerChatRequestToolChoice  `json:"tool_choice,omitempty"`
 }
 
 // AnswerChatRequestContext mapping
@@ -107,6 +108,12 @@ type AnswerChatRequestContextConversationMessage struct {
 type AnswerChatRequestTool struct {
 	Type     string                        `json:"type"`
 	Function AnswerChatRequestToolFunction `json:"function"`
+}
+
+// AnswerChatRequestToolChoice mapping
+type AnswerChatRequestToolChoice struct {
+	Mode   string     `json:"mode"`
+	Tools  *[]string  `json:"type,omitempty"`
 }
 
 // AnswerChatRequestAnswer mapping
